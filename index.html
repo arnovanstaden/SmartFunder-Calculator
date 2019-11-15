@@ -1,0 +1,256 @@
+ <!DOCTYPE html>
+ <html>
+
+ <head>
+     <meta charset="utf-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta name=" robots" content="index, follow">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+     <!-- Webdacity -->
+     <meta name="author" content="Webdacity">
+     <meta name="publisher" content="Webdacity" />
+     <meta name="copyright" content="2019 " />
+
+     <!-- Website Content -->
+     <title> SmartFunder Tax Calculator </title>
+     <meta name="description" content="">
+     <meta name="keywords" content="" />
+
+     <!-- Favicon -->
+     <link rel="icon" type="image/png" href="">
+
+     <!-- StyleSheets -->
+
+     <!-- Theme Colour -->
+     <meta name="theme-color" content="#">
+     <meta name="apple-mobile-web-app-status-bar-style" content="">
+
+     <!-- Vendors -->
+     <link href="./vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
+
+     <!-- Internal -->
+     <link rel="stylesheet" type="text/css" href="./assets/main.css" />
+
+ </head>
+
+ <body>
+
+     <div class="calculator-body">
+         <div class="calulator-heading">
+             <h1>SmartFunder Benefit Calculator 2019 </h1>
+             <ul>
+                 <li>1. This SmartFunder Benefit calculator is intended to calculate estimated tax savings as a result
+                     of
+                     utilising the pre-tax benefit for educational expenses.</li>
+                 <li>2. Actual savings can only be determined once processed via your employer's payroll system, taking
+                     into consideration all other package structuring information.</li>
+                 <li>3. To utilise this calculator, enter the required information into the blue cells. </li>
+                 <li>4. Alternatively, speak to your HR generalist for more assistance.</li>
+             </ul>
+         </div>
+         <h2>Tax Savings Calculator</h2>
+         <div class="without-SF-container">
+             <div>
+                 <h4>Without SmartFunder</h4>
+                 <p>Current Taxable Income</p>
+                 <p>Current Pay As You Earn Tax (PAYE)</p>
+             </div>
+             <div>
+                 <h4>Annual</h4>
+                 <input type="Number" id="input-taxable-income">
+                 <input type="text" id="input-paye">
+             </div>
+         </div>
+         <div class="ed-expenses-container">
+             <div>
+                 <h3>Beneficiary</h3>
+                 <p>Beneficiary 1</p>
+                 <!-- <p>Beneficiary 2</p>
+                 <p>Beneficiary 3</p>
+                 <p>Beneficiary 4</p> -->
+                 <p>Total Bursary Deduction</p>
+             </div>
+             <div>
+                 <h3>Select Benefit Type</h3>
+                 <form action="">
+                     <div class="form-group">
+                         <select class="form-control" id="">
+                             <option></option>
+                             <option>School</option>
+                             <option>Tertiary</option>
+                         </select>
+                     </div>
+                 </form>
+                 <!-- <form action="">
+                     <div class="form-group">
+                         <select class="form-control" id="">
+                             <option></option>
+                             <option>School</option>
+                             <option>Tertiary</option>
+                         </select>
+                     </div>
+                 </form>
+                 <form action="">
+                     <div class="form-group">
+                         <select class="form-control" id="">
+                             <option></option>
+                             <option>School</option>
+                             <option>Tertiary</option>
+                         </select>
+                     </div>
+                 </form>
+                 <form action="">
+                     <div class="form-group">
+                         <select class="form-control" id="">
+                             <option></option>
+                             <option>School</option>
+                             <option>Tertiary</option>
+                         </select>
+                     </div>
+                 </form> -->
+             </div>
+             <div>
+                 <h3>Total Fees</h3>
+                 <input type="number" name="" id="">
+                 <!-- <input type="number" name="" id="">
+                 <input type="number" name="" id="">
+                 <input type="number" name="" id=""> -->
+                 <p>?</p>
+             </div>
+             <div>
+                 <h3>First Month on Benefit</h3>
+                 <form action="">
+                     <div class="form-group">
+                         <select class="form-control" id="">
+                             <option></option>
+                             <option>Jan</option>
+                             <option>Feb</option>
+                             <option>Mar</option>
+                             <option>Apr</option>
+                             <option>Jun</option>
+                             <option>Jul</option>
+                             <option>Aug</option>
+                             <option>Sept</option>
+                             <option>Oct</option>
+                             <option>Nov</option>
+                             <option>Dec</option>
+                         </select>
+                     </div>
+                 </form>
+                 <!-- <form action="">
+                     <div class="form-group">
+                         <select class="form-control" id="">
+                             <option></option>
+                             <option>Jan</option>
+                             <option>Feb</option>
+                             <option>Mar</option>
+                             <option>Apr</option>
+                             <option>Jun</option>
+                             <option>Jul</option>
+                             <option>Aug</option>
+                             <option>Sept</option>
+                             <option>Oct</option>
+                             <option>Nov</option>
+                             <option>Dec</option>
+                         </select>
+                     </div>
+                 </form>
+                 <form action="">
+                     <div class="form-group">
+                         <select class="form-control" id="">
+                             <option></option>
+                             <option>Jan</option>
+                             <option>Feb</option>
+                             <option>Mar</option>
+                             <option>Apr</option>
+                             <option>Jun</option>
+                             <option>Jul</option>
+                             <option>Aug</option>
+                             <option>Sept</option>
+                             <option>Oct</option>
+                             <option>Nov</option>
+                             <option>Dec</option>
+                         </select>
+                     </div>
+                 </form>
+                 <form action="">
+                     <div class="form-group">
+                         <select class="form-control" id="">
+                             <option></option>
+                             <option>Jan</option>
+                             <option>Feb</option>
+                             <option>Mar</option>
+                             <option>Apr</option>
+                             <option>Jun</option>
+                             <option>Jul</option>
+                             <option>Aug</option>
+                             <option>Sept</option>
+                             <option>Oct</option>
+                             <option>Nov</option>
+                             <option>Dec</option>
+                         </select>
+                     </div>
+                 </form> -->
+             </div>
+             <div>
+                 <h3>Tax Exempt </h3>
+                 <p></p>
+                 <!-- <p></p>
+                 <p></p>
+                 <p></p> -->
+                 <p>?</p>
+             </div>
+             <div>
+                 <h3>Not Tax Exempt </h3>
+                 <p></p>
+                 <!-- <p></p>
+                 <p></p>
+                 <p></p> -->
+                 <p>?</p>
+             </div>
+         </div>
+         <button id="calculate-button" onclick="calculate()">Calculate</button>
+         <div class="with-SF-container">
+             <div>
+                 <h2>With SmartFunder</h2>
+                 <p>Current taxable income</p>
+                 <p>Total benefit deduction</p>
+                 <p>Tax exempt educational expenses deduction</p>
+                 <p>Non tax exempt educational expenses deduction</p>
+                 <p>New taxable income</p>
+                 <p>New Pay As You Earn tax (PAYE)</p>
+                 <p>Administration fee</p>
+             </div>
+             <div>
+                 <h2>Annual</h2>
+                 <p>?</p>
+                 <p>?</p>
+                 <p>?</p>
+                 <p>?</p>
+                 <p>?</p>
+                 <p>?</p>
+                 <p>?</p>
+             </div>
+         </div>
+         <div class="savings-container">
+             <h3>Potential Annual Tax Saving**</h3>
+             <p>?</p>
+         </div>
+         <div class="footer">
+             <p>**Please note that these are indicative numbers.
+                 **Actual savings can only be assessed once it has been processed through the employer's payroll system,
+                 taking into consideration all other package structuring information.</p>
+         </div>
+     </div>
+
+
+
+     <!-- Scripts -->
+     <script src="./vendors/jquery/jquery-3.4.1.min.js"></script>
+     <script src="./vendors/bootstrap/bootstrap.bundle.min.js"> </script>
+     <script src="./assets/main.js"></script>
+
+ </body>
+
+ </html>

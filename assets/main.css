@@ -1,0 +1,40 @@
+html {
+    overflow-x: hidden;
+    font-size: 16px;
+}
+
+.calculator-body {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.without-SF-container, .with-SF-container, .savings-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding: 0 20%;
+}
+
+.with-SF-container > div {
+    display: grid;
+    grid-template-rows: repeat(8, 1fr);
+
+}
+
+.without-SF-container input {
+    display: block;
+    margin: auto;
+    margin: 1rem auto;
+}
+
+.ed-expenses-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    column-gap: 20px;
+}
+
+.ed-expenses-container > div {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+}
