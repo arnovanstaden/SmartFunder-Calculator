@@ -9,6 +9,8 @@ html {
     text-align: center;
 }
 
+.calulator-heading ul {list-style: none}
+
 .without-SF-container, .with-SF-container, .savings-container {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -27,14 +29,6 @@ html {
     margin: 1rem auto;
 }
 
-.ed-expenses-container {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    column-gap: 20px;
-}
-
-.ed-expenses-container > div {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 1fr);
+.input-to-edit {
+    border: 2px solid lightskyblue;
 }

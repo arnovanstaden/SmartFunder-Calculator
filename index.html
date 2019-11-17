@@ -58,159 +58,76 @@
              </div>
              <div>
                  <h4>Annual</h4>
-                 <input type="Number" id="input-taxable-income">
-                 <input type="text" id="input-paye">
+                 <input type="number" class="input-to-edit" id="input-taxable-income">
+                 <input type="number" id="input-paye" readonly>
              </div>
          </div>
-         <div class="ed-expenses-container">
-             <div>
-                 <h3>Beneficiary</h3>
-                 <p>Beneficiary 1</p>
-                 <!-- <p>Beneficiary 2</p>
-                 <p>Beneficiary 3</p>
-                 <p>Beneficiary 4</p> -->
-                 <p>Total Bursary Deduction</p>
+
+         <div class="ed-expenses-container" id="ed-expenses-container">
+             <div class="form-row" id="beneficiary-row-1">
+                 <div class="form-group col-md-2">
+                     <label for="">Beneficiary</label>
+                     <input type="text" class="form-control beneficiary-number" id="" value="Beneficiary 1" readonly>
+                 </div>
+                 <div class="form-group col-md-2">
+                     <label for="">Benefit Type</label>
+                     <select class="form-control input-to-edit benefit-type-input">
+                         <option value=""></option>
+                         <option value="school">School</option>
+                         <option value="tertiary">Tertiary</option>
+                     </select>
+                 </div>
+                 <div class="form-group col-md-2">
+                     <label for="">Total Fees</label>
+                     <input type="number" class="form-control total-fees-input input-to-edit" id="" disabled="true">
+                 </div>
+                 <div class="form-group col-md-2">
+                     <label for="">First Month On Benefit</label>
+                     <select class="form-control input-to-edit" id="first-month-input" required >
+                         <option></option>
+                         <option>Jan</option>
+                         <option>Feb</option>
+                         <option>Mar</option>
+                         <option>Apr</option>
+                         <option>Jun</option>
+                         <option>Jul</option>
+                         <option>Aug</option>
+                         <option>Sept</option>
+                         <option>Oct</option>
+                         <option>Nov</option>
+                         <option>Dec</option>
+                     </select>
+                 </div>
+                 <div class="form-group col-md-2">
+                     <label for="">Tax Exempt</label>
+                     <input type="number" class="form-control" id="input-tax-exempt" readonly>
+                 </div>
+                 <div class="form-group col-md-2">
+                     <label for="">Not Tax Exempt</label>
+                     <input type="number" class="form-control" id="input-not-tax-exempt" readonly>
+                 </div>
              </div>
-             <div>
-                 <h3>Select Benefit Type</h3>
-                 <form action="">
-                     <div class="form-group">
-                         <select class="form-control" id="">
-                             <option></option>
-                             <option>School</option>
-                             <option>Tertiary</option>
-                         </select>
-                     </div>
-                 </form>
-                 <!-- <form action="">
-                     <div class="form-group">
-                         <select class="form-control" id="">
-                             <option></option>
-                             <option>School</option>
-                             <option>Tertiary</option>
-                         </select>
-                     </div>
-                 </form>
-                 <form action="">
-                     <div class="form-group">
-                         <select class="form-control" id="">
-                             <option></option>
-                             <option>School</option>
-                             <option>Tertiary</option>
-                         </select>
-                     </div>
-                 </form>
-                 <form action="">
-                     <div class="form-group">
-                         <select class="form-control" id="">
-                             <option></option>
-                             <option>School</option>
-                             <option>Tertiary</option>
-                         </select>
-                     </div>
-                 </form> -->
+
+         </div>
+         <button class="btn-primary add-beneficiary-btn">Add Beneficiary</button>
+         <div class="row total-row">
+             <div class="col-md-4">
+                 <h3>Total Bursary Deduction</h3>
              </div>
-             <div>
-                 <h3>Total Fees</h3>
-                 <input type="number" name="" id="">
-                 <!-- <input type="number" name="" id="">
-                 <input type="number" name="" id="">
-                 <input type="number" name="" id=""> -->
-                 <p>?</p>
+             <div class="col-md-2">
+                 <input type="number" id="total-fees" readonly>
              </div>
-             <div>
-                 <h3>First Month on Benefit</h3>
-                 <form action="">
-                     <div class="form-group">
-                         <select class="form-control" id="">
-                             <option></option>
-                             <option>Jan</option>
-                             <option>Feb</option>
-                             <option>Mar</option>
-                             <option>Apr</option>
-                             <option>Jun</option>
-                             <option>Jul</option>
-                             <option>Aug</option>
-                             <option>Sept</option>
-                             <option>Oct</option>
-                             <option>Nov</option>
-                             <option>Dec</option>
-                         </select>
-                     </div>
-                 </form>
-                 <!-- <form action="">
-                     <div class="form-group">
-                         <select class="form-control" id="">
-                             <option></option>
-                             <option>Jan</option>
-                             <option>Feb</option>
-                             <option>Mar</option>
-                             <option>Apr</option>
-                             <option>Jun</option>
-                             <option>Jul</option>
-                             <option>Aug</option>
-                             <option>Sept</option>
-                             <option>Oct</option>
-                             <option>Nov</option>
-                             <option>Dec</option>
-                         </select>
-                     </div>
-                 </form>
-                 <form action="">
-                     <div class="form-group">
-                         <select class="form-control" id="">
-                             <option></option>
-                             <option>Jan</option>
-                             <option>Feb</option>
-                             <option>Mar</option>
-                             <option>Apr</option>
-                             <option>Jun</option>
-                             <option>Jul</option>
-                             <option>Aug</option>
-                             <option>Sept</option>
-                             <option>Oct</option>
-                             <option>Nov</option>
-                             <option>Dec</option>
-                         </select>
-                     </div>
-                 </form>
-                 <form action="">
-                     <div class="form-group">
-                         <select class="form-control" id="">
-                             <option></option>
-                             <option>Jan</option>
-                             <option>Feb</option>
-                             <option>Mar</option>
-                             <option>Apr</option>
-                             <option>Jun</option>
-                             <option>Jul</option>
-                             <option>Aug</option>
-                             <option>Sept</option>
-                             <option>Oct</option>
-                             <option>Nov</option>
-                             <option>Dec</option>
-                         </select>
-                     </div>
-                 </form> -->
+             <div class="col-md-2">
+
              </div>
-             <div>
-                 <h3>Tax Exempt </h3>
-                 <p></p>
-                 <!-- <p></p>
-                 <p></p>
-                 <p></p> -->
-                 <p>?</p>
+             <div class="col-md-2">
+                 <input type="number" id="total-tax-exempt" readonly>
              </div>
-             <div>
-                 <h3>Not Tax Exempt </h3>
-                 <p></p>
-                 <!-- <p></p>
-                 <p></p>
-                 <p></p> -->
-                 <p>?</p>
+             <div class="col-md-2">
+                 <input type="number" id="total-tax-not-exempt" readonly>
              </div>
          </div>
-         <button id="calculate-button" onclick="calculate()">Calculate</button>
+         <button id="calculate-btn" onclick="calculate()">Calculate</button>
          <div class="with-SF-container">
              <div>
                  <h2>With SmartFunder</h2>
@@ -224,13 +141,13 @@
              </div>
              <div>
                  <h2>Annual</h2>
-                 <p>?</p>
-                 <p>?</p>
-                 <p>?</p>
-                 <p>?</p>
-                 <p>?</p>
-                 <p>?</p>
-                 <p>?</p>
+                 <p id="with-sf-tax-income">?</p>
+                 <p id="with-sf-total-fees">?</p>
+                 <p id="with-sf-tax-exempt">?</p>
+                 <p id="with-sf-not-tax-exempt">?</p>
+                 <p id="with-sf-new-tax-income">?</p>
+                 <p id="with-sf">?</p>
+                 <p id="with-sf">?</p>
              </div>
          </div>
          <div class="savings-container">
