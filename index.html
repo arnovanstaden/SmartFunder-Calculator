@@ -10,7 +10,7 @@
      <!-- Webdacity -->
      <meta name="author" content="Webdacity">
      <meta name="publisher" content="Webdacity" />
-     <meta name="copyright" content="2019 " />
+     <meta name="copyright" content="2019 SmartFunder" />
 
      <!-- Website Content -->
      <title> SmartFunder Tax Calculator </title>
@@ -18,18 +18,17 @@
      <meta name="keywords" content="" />
 
      <!-- Favicon -->
-     <link rel="icon" type="image/png" href="">
-
-     <!-- StyleSheets -->
+     <link rel="icon" type="image/png" href="./assets/images/SF-Favicon.png">
 
      <!-- Theme Colour -->
      <meta name="theme-color" content="#">
      <meta name="apple-mobile-web-app-status-bar-style" content="">
 
-     <!-- Vendors -->
+     <!-- StyleSheet - Vendors -->
      <link href="./vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
+     <link href="./vendors/font-awesome/css/all.css" rel="stylesheet">
 
-     <!-- Internal -->
+     <!-- StyleSheet - Internal -->
      <link rel="stylesheet" type="text/css" href="./assets/main.css" />
 
  </head>
@@ -37,8 +36,9 @@
  <body>
 
      <div class="calculator-body">
-         <div class="calulator-heading">
-             <h1>SmartFunder Benefit Calculator 2019 </h1>
+         <div class="calculator-heading">
+             <img src="./assets/images/SmartFunder-Footer-Logo-1000px.png" alt="SmartFunder Logo">
+             <h2>SmartFunder Benefit Calculator 2019 </h2>
              <ul>
                  <li>1. This SmartFunder Benefit calculator is intended to calculate estimated tax savings as a result
                      of
@@ -49,21 +49,31 @@
                  <li>4. Alternatively, speak to your HR generalist for more assistance.</li>
              </ul>
          </div>
-         <h2>Tax Savings Calculator</h2>
-         <div class="without-SF-container">
-             <div>
+         <div class="income-paye-container">
+             <h2>Tax Savings Calculator</h2>
+             <div class="without-SF-container">
                  <h4>Without SmartFunder</h4>
-                 <p>Current Taxable Income</p>
-                 <p>Current Pay As You Earn Tax (PAYE)</p>
-             </div>
-             <div>
                  <h4>Annual</h4>
-                 <input type="number" class="input-to-edit" id="input-taxable-income">
-                 <input type="number" id="input-paye" readonly>
+             </div>
+             <div class="form-group row m-auto justify-content-md-center">
+                 <label for="" class="col-form-label col-sm-4">Current Taxable Income</label>
+                 <div class="col-sm-6">
+                     <input type="number" class="form-control input-to-edit" id="input-taxable-income">
+                 </div>
+
+             </div>
+             <div class="form-group row m-auto justify-content-md-center">
+                 <label for="" class="col-form-label col-sm-4">Current Pay As You Earn tax (PAYE)</label>
+                 <div class="col-sm-6">
+                     <input type="number" class="form-control" id="input-paye" readonly>
+                 </div>
+
              </div>
          </div>
 
+
          <div class="ed-expenses-container" id="ed-expenses-container">
+             <h2>Educational Expenses</h2>
              <div class="form-row" id="beneficiary-row-1">
                  <div class="form-group col-md-2">
                      <label for="">Beneficiary</label>
@@ -79,23 +89,24 @@
                  </div>
                  <div class="form-group col-md-2">
                      <label for="">Total Fees</label>
-                     <input type="number" class="form-control total-fees-input input-to-edit" id="" disabled="true">
+                     <input type="number" class="form-control total-fees-input input-to-edit" id="">
                  </div>
                  <div class="form-group col-md-2">
                      <label for="">First Month On Benefit</label>
-                     <select class="form-control input-to-edit" id="first-month-input" required >
+                     <select class="form-control input-to-edit" id="first-month-input" required>
                          <option></option>
-                         <option>Jan</option>
-                         <option>Feb</option>
-                         <option>Mar</option>
-                         <option>Apr</option>
-                         <option>Jun</option>
-                         <option>Jul</option>
-                         <option>Aug</option>
-                         <option>Sept</option>
-                         <option>Oct</option>
-                         <option>Nov</option>
-                         <option>Dec</option>
+                         <option value=12>January</option>
+                         <option value=11>February</option>
+                         <option value=10>March</option>
+                         <option value=9>April</option>
+                         <option value=8>May</option>
+                         <option value=7>June</option>
+                         <option value=6>July</option>
+                         <option value=5>August</option>
+                         <option value=4>September</option>
+                         <option value=3>October</option>
+                         <option value=2>November</option>
+                         <option value=1>December</option>
                      </select>
                  </div>
                  <div class="form-group col-md-2">
@@ -109,56 +120,74 @@
              </div>
 
          </div>
-         <button class="btn-primary add-beneficiary-btn">Add Beneficiary</button>
+         <button class=" add-beneficiary-btn"> <i class="far fa-plus"></i> Add Beneficiary</button>
+         <button class=" reset-beneficiary-btn"> Reset All</button>
          <div class="row total-row">
              <div class="col-md-4">
                  <h3>Total Bursary Deduction</h3>
              </div>
              <div class="col-md-2">
-                 <input type="number" id="total-fees" readonly>
+                 <input type="number" class="form-control" id="total-fees" readonly>
              </div>
              <div class="col-md-2">
 
              </div>
              <div class="col-md-2">
-                 <input type="number" id="total-tax-exempt" readonly>
+                 <input type="number" class="form-control" id="total-tax-exempt" readonly>
              </div>
              <div class="col-md-2">
-                 <input type="number" id="total-tax-not-exempt" readonly>
+                 <input type="number" class="form-control" id="total-tax-not-exempt" readonly>
              </div>
          </div>
-         <button id="calculate-btn" onclick="calculate()">Calculate</button>
+         <div>
+             <button class="calculate-btn" onclick="calculate()" >Calculate</button>
+         </div>
          <div class="with-SF-container">
              <div>
                  <h2>With SmartFunder</h2>
-                 <p>Current taxable income</p>
-                 <p>Total benefit deduction</p>
-                 <p>Tax exempt educational expenses deduction</p>
-                 <p>Non tax exempt educational expenses deduction</p>
-                 <p>New taxable income</p>
-                 <p>New Pay As You Earn tax (PAYE)</p>
-                 <p>Administration fee</p>
+                 <h2>Annual</h2>
              </div>
              <div>
-                 <h2>Annual</h2>
-                 <p id="with-sf-tax-income">?</p>
-                 <p id="with-sf-total-fees">?</p>
-                 <p id="with-sf-tax-exempt">?</p>
-                 <p id="with-sf-not-tax-exempt">?</p>
-                 <p id="with-sf-new-tax-income">?</p>
-                 <p id="with-sf">?</p>
-                 <p id="with-sf">?</p>
+                 <h5>Current taxable income</h5>
+                 <h6 id="with-sf-tax-income">?</h6>
+             </div>
+             <div>
+                 <h5>Total benefit deduction</h5>
+                 <h6 id="with-sf-total-fees">?</h6>
+             </div>
+             <div>
+                 <h5>Tax exempt educational expenses deduction</h5>
+                 <h6 id="with-sf-tax-exempt">?</h6>
+             </div>
+             <div>
+                 <h5>Non tax exempt educational expenses deduction</h5>
+                 <h6 id="with-sf-not-tax-exempt">?</h6>
+             </div>
+             <div>
+                 <h5>New taxable income</h5>
+                 <h6 id="with-sf-new-tax-income">?</h6>
+             </div>
+             <div>
+                 <h5>New Pay As You Earn tax (PAYE)</h5>
+                 <h6 id="with-sf-new-paye">?</h6>
+             </div>
+             <div>
+                 <h5>Administration fee</h5>
+                 <h6 id="with-sf-admin-fee">?</h6>
+             </div>
+             <div class="savings-container">
+                 <h4>Potential Annual Tax Saving**</h4>
+                 <h6 id="annual-saving">?</h6>
              </div>
          </div>
-         <div class="savings-container">
-             <h3>Potential Annual Tax Saving**</h3>
-             <p>?</p>
-         </div>
-         <div class="footer">
-             <p>**Please note that these are indicative numbers.
-                 **Actual savings can only be assessed once it has been processed through the employer's payroll system,
-                 taking into consideration all other package structuring information.</p>
-         </div>
+     </div>
+
+
+     <div class="footer">
+         <p>**Please note that these are indicative numbers. <br>
+             **Actual savings can only be assessed once it has been processed through the employer's payroll system,
+             taking into consideration all other package structuring information.</p>
+     </div>
      </div>
 
 
