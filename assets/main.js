@@ -87,9 +87,10 @@ const addBeneficiary = () => {
         `<div class="form-row" id="beneficiary-row-${beneficiaryCount}"> 
         ${beneficiaryLine}
         </div>`);
-    $(`#beneficiary-row-${beneficiaryCount} .beneficiary-number`).val(`Beneficiary ${beneficiaryCount}`)
-};
+    $(`#beneficiary-row-${beneficiaryCount} .beneficiary-number`).val(`Beneficiary ${beneficiaryCount}`);
 
+
+};
 
 $(document).on("click", ".add-beneficiary-btn", () => {
     addBeneficiary();

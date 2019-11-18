@@ -131,6 +131,10 @@ button:focus,button:active {
     font-size: 1.1em;
 }
 
+.income-paye-container label {
+    font-size: 1.1em;
+}
+
 /* Expenses Container */
 
 .without-SF-container {
@@ -264,6 +268,20 @@ button:focus,button:active {
     border-bottom: 1px solid var(--light-blue);
 }
 
+.with-SF-container > div:nth-child(5) {
+    border-bottom: 3px solid var(--light-blue);
+    margin-bottom: 10px;
+}
+
+.savings-container {
+    border: 3px solid var(--dark-blue) !important;
+    margin-top: 20px;
+}
+
+.savings-container h4:nth-child(2) {
+    text-align: center ;
+}
+
 .with-SF-container > div h5 {
     text-align: left;
     margin: 0;
@@ -275,10 +293,23 @@ button:focus,button:active {
     font-weight: 700;
 }
 
-.with-SF-container > div p {
+.with-SF-container > div h6 {
     margin: 0;
+    font-weight: 600;
+    font-size: 1.1em;
 }
 
+.with-SF-container > div:nth-child(6) h5,
+.with-SF-container > div:nth-child(7) h5,
+.with-SF-container > div:nth-child(8) h5 {
+    font-weight: 700;
+}
+
+.with-SF-container > div:nth-child(6) h6,
+.with-SF-container > div:nth-child(7) h6,
+.with-SF-container > div:nth-child(8) h6 {
+    font-weight: 700;
+}
 
 
 /* footer */
