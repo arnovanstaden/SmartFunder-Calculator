@@ -48,9 +48,9 @@ getPaye = (taxableIncome) => {
         }
         // Above 600 000
         else if (taxableIncome > 600000) {
-            console.log("No SF For You");
+            alert("Employees with current taxable income over R600 000 do not qualify for the SmartFunder Benefit");
+            document.getElementById("input-taxable-income").value = "";
             break;
-
         }
         // Tax Scales
         else if (taxableIncome >= taxTable.taxScale[i][1] && taxableIncome <= taxTable.taxScale[i][2]) {
