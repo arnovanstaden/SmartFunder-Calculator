@@ -108,19 +108,28 @@ button:focus,button:active {
 }
 
 .calculator-heading ul {
-    list-style: none
+    list-style: none;
+    padding-left: 0;
+}
+
+.calculator-heading ul li {
+    padding: 5px 0;;
 }
 
 /* Income Tax + Paye Container */
 .income-paye-container {
-    background-color: var(--dark-blue);
+    background-color: var(--light-blue);
     color: white;
     margin: 50px 0;
     padding: 2% 5%;
+    box-shadow: 3px 3px 10px rgba(25, 35, 54, 0.2);
 }
 
-.income-paye-container h4 {
-    text-decoration: underline var(--light-blue);
+.income-paye-container h2 {
+    /* text-decoration: underline white; */
+    font-weight: 600;
+    font-size: 2em;
+    color: white
 }
 
 .income-paye-container .form-group {
@@ -131,6 +140,10 @@ button:focus,button:active {
     font-size: 1.1em;
 }
 
+#input-taxable-income {
+    border: 2px solid var(--dark-blue);
+}
+
 .income-paye-container label {
     font-size: 1.1em;
 }
@@ -138,8 +151,6 @@ button:focus,button:active {
 /* Expenses Container */
 
 .without-SF-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
     padding: 0 5%;
 }
 
@@ -150,6 +161,10 @@ button:focus,button:active {
     color: var(--dark-blue);
     font-weight: 600;
     font-size: 1.2em;
+}
+
+.ed-expenses-container {
+    padding-top: 50px;
 }
 
 .ed-expenses-container .form-row {
@@ -234,11 +249,12 @@ button:focus,button:active {
     transform: scale(1.1);
 }
 
-.reset-beneficiary-btn {
+.reset-btn {
     background-color: transparent;
     color: var(--dark-blue);
     border: 2px solid var(--dark-blue);
-    margin: 20px auto;
+    text-align: center;
+    margin: 20px auto !important;
     padding: 5px 20px;
     border-radius: 5px;
     font-size: 1.1em;
@@ -246,9 +262,15 @@ button:focus,button:active {
     transition: 0.5s;
     margin-left: 20px;
 }
-.reset-beneficiary-btn:hover {
+.reset-btn:hover {
     border: 2px solid var(--light-blue);
     color: var(--light-blue);
+}
+
+.reset-container {
+    text-align: center;
+    display: flex;
+    justify-content: center !important;
 }
 
 
@@ -258,9 +280,15 @@ button:focus,button:active {
     padding: 2% 10%;
 }
 
+.with-SF-container h2 {
+    font-weight: 600;
+    font-size: 2em;
+    color: var(--dark-blue);
+}
+
 .with-SF-container > div  {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 50% 50%;
     padding: 5px;
 }
 
@@ -290,7 +318,7 @@ button:focus,button:active {
 .with-SF-container > div h4 {
     text-align: left;
     margin: 0;
-    font-weight: 700;
+    font-weight: 600;
 }
 
 .with-SF-container > div h6 {
@@ -316,4 +344,5 @@ button:focus,button:active {
 
 .footer {
     text-align: center;
+    padding-top: 2%;
 }

@@ -44,7 +44,6 @@ getPaye = (taxableIncome) => {
         if (taxableIncome <= taxThreshhold) {
             paye = 0;
             break;
-
         }
         // Above 600 000
         else if (taxableIncome > 600000) {
@@ -95,13 +94,6 @@ const addBeneficiary = () => {
 $(document).on("click", ".add-beneficiary-btn", () => {
     addBeneficiary();
     $(".add-beneficiary-btn").addClass("clicked-once")
-});
-
-// Reset Beneficiaries
-
-$(document).on("click", ".reset-beneficiary-btn", () => {
-    location.reload();
-
 });
 
 //  __________________________________________________________
@@ -228,8 +220,10 @@ const getAdminFee = (taxableIncome) => {
 
     // Loop For Every Beneficiary
     for (m = 1; m <= beneficiaryCount; m++) {
-        const months = parseInt($(`#beneficiary-row-${m} #first-month-input`).val());
-
+        let months = parseInt($(`#beneficiary-row-${m} #first-month-input`).val());
+        if (isNaN(months)) {
+            months = 0;
+        }
         let currentBeneficiaryFee = 0;
         // Loop Through costToCompany Array
         for (l = 0; l <= costToCompany.length; l++) {
@@ -254,8 +248,8 @@ const getAdminFee = (taxableIncome) => {
 calculate = () => {
 
     // Check all fields not empty
-    if ($("input").val() == "") {
-        alert("You need to fill in all the relevant fields");
+    if( $('.input-to-edit').filter(function() { return this.value === ''; }).length !== 0 ) {
+        alert("You need to fill in all the relevant fields");   
     } else {
         // Taxable Income
         const taxableIncome = $("#input-taxable-income").val();
@@ -268,19 +262,25 @@ calculate = () => {
 
         // New Taxable Income
         const newTaxableIncome = taxableIncome - $(".total-row #total-tax-exempt").val();
-        $("#with-sf-new-tax-income").html(newTaxableIncome);
+        $("#with-sf-new-tax-income").html("R " + newTaxableIncome);
 
         // New PAYE
-        $("#with-sf-new-paye").html(getPaye(newTaxableIncome));
+        $("#with-sf-new-paye").html("R " + getPaye(newTaxableIncome));
 
         // Admin Fee
-        $("#with-sf-admin-fee").html(getAdminFee(taxableIncome));
+        // $("#with-sf-admin-fee").html(getAdminFee(taxableIncome));
 
         // Annual Saving
-        const annualSaving = ($("#input-paye").val() - getPaye(newTaxableIncome) - getAdminFee(taxableIncome));
-        $("#annual-saving").html(annualSaving);
+        const annualSaving = ($("#input-paye").val()
+        - getPaye(newTaxableIncome)
+        // - getAdminFee(taxableIncome)
+        );
+        $("#annual-saving").html("R " + annualSaving);
     }
-
-
-
 }
+
+// Reset All
+
+$(document).on("click", "#reset-all-btn", () => {
+    location.reload();
+});

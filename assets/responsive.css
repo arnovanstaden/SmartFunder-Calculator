@@ -1,0 +1,21 @@
+@media screen and (max-width: 768px) {
+    .with-SF-container {
+        padding: 2%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .calculator-heading>img {
+        width:85%;
+        padding: 20px 0;
+    }
+
+    .calculator-heading h2 {
+        font-size: 1.8em;
+        padding: 0 20px;
+    }
+
+    .with-SF-container h2 {
+        font-size: 1.6em;
+    }
+}
