@@ -99,12 +99,20 @@ button:focus,button:active {
 
 /* Calculator Heading */
 .calculator-heading>img {
-    width: 50%;
+    width: 40%;
 }
 
 .calculator-heading {
     box-shadow: 3px 3px 10px rgba(25, 35, 54, 0.5);
     padding: 2% 5%;
+    background-color: white;
+}
+
+.calculator-heading > .divider-line {
+    width: 40%;
+    height: 3px;
+    background-color: var(--light-blue);
+    margin: 1rem auto;
 }
 
 .calculator-heading ul {
@@ -113,7 +121,12 @@ button:focus,button:active {
 }
 
 .calculator-heading ul li {
-    padding: 5px 0;;
+    padding: 5px 0;
+}
+
+.calculator-heading > ul p {
+    font-weight: 700;
+    font-size: 1.2rem;
 }
 
 /* Income Tax + Paye Container */
@@ -128,7 +141,7 @@ button:focus,button:active {
 .income-paye-container h2 {
     /* text-decoration: underline white; */
     font-weight: 600;
-    font-size: 2em;
+    font-size: 2rem;
     color: white
 }
 
@@ -137,7 +150,7 @@ button:focus,button:active {
 }
 
 .income-paye-container .form-group input {
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 #input-taxable-income {
@@ -145,7 +158,7 @@ button:focus,button:active {
 }
 
 .income-paye-container label {
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 /* Expenses Container */
@@ -160,7 +173,7 @@ button:focus,button:active {
     margin: 1rem auto;
     color: var(--dark-blue);
     font-weight: 600;
-    font-size: 1.2em;
+    font-size: 1.2rem;
 }
 
 .ed-expenses-container {
@@ -185,6 +198,10 @@ button:focus,button:active {
     font-weight: 600;
 }
 
+.beneficiary-row {
+    background-color: white;
+}
+
 .add-beneficiary-btn {
     background-color: var(--light-blue);
     color: white;
@@ -192,7 +209,7 @@ button:focus,button:active {
     margin: 20px auto;
     padding: 5px 20px;
     border-radius: 5px;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     transition: 0.5s;
@@ -225,7 +242,7 @@ button:focus,button:active {
     font-weight: 700;
     text-align: center;
     color: var(--dark-blue);
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 /* Buttons */
@@ -236,7 +253,7 @@ button:focus,button:active {
     margin: 20px auto;
     padding: 5px 20px;
     border-radius: 5px;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     letter-spacing: 1px;
@@ -257,7 +274,7 @@ button:focus,button:active {
     margin: 20px auto !important;
     padding: 5px 20px;
     border-radius: 5px;
-    font-size: 1.1em;
+    font-size: 1.1rem;
     font-weight: 600;
     transition: 0.5s;
     margin-left: 20px;
@@ -282,7 +299,7 @@ button:focus,button:active {
 
 .with-SF-container h2 {
     font-weight: 600;
-    font-size: 2em;
+    font-size: 2rem;
     color: var(--dark-blue);
 }
 
@@ -324,7 +341,7 @@ button:focus,button:active {
 .with-SF-container > div h6 {
     margin: 0;
     font-weight: 600;
-    font-size: 1.1em;
+    font-size: 1.1rem;
 }
 
 .with-SF-container > div:nth-child(6) h5,
@@ -337,6 +354,11 @@ button:focus,button:active {
 .with-SF-container > div:nth-child(7) h6,
 .with-SF-container > div:nth-child(8) h6 {
     font-weight: 700;
+}
+
+.with-SF-container p {
+    font-size: 1.2rem;
+    font-weight: 600;
 }
 
 

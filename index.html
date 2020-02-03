@@ -40,15 +40,22 @@
      <div class="calculator-body">
          <div class="calculator-heading">
              <img src="./assets/images/SmartFunder-Footer-Logo-1000px.png" alt="SmartFunder Logo">
-             <h2>SmartFunder Benefit Calculator 2019 </h2>
+             <h2>Savings Calculator 2020 </h2>
+             <div class="divider-line"></div>
              <ul>
-                 <li>1. This SmartFunder Benefit calculator is intended to calculate estimated tax savings as a result
+                 <p>This SmartFunder Benefit calculator is intended to calculate anual estimated tax savings as a
+                     result
                      of
-                     utilising the pre-tax benefit for educational expenses.</li>
-                 <li>2. Actual savings can only be determined once processed via your employer's payroll system, taking
-                     into consideration all other package structuring information.</li>
-                 <li>3. To utilise this calculator, enter the required information into the blue cells. </li>
-                 <li>4. Alternatively, speak to your HR generalist for more assistance.</li>
+                     utilising the pre-tax benefit for educational expenses.</p>
+                 <p>Instructions:
+                     <ul>
+                         <li>1. Enter your educational expenses details</li>
+                         <li>2. Enter your Current Taxable Annual Income</li>
+                         <li>3. Click on calculate</li>
+                     </ul>
+
+
+                 </p>
              </ul>
          </div>
 
@@ -69,7 +76,7 @@
                      </select>
                  </div>
                  <div class="form-group col-lg-2 col-md-4">
-                     <label for="">Total Fees (R)</label>
+                     <label for="">Total Annual Fees (R)</label>
                      <input type="number" class="form-control total-fees-input input-to-edit" id="">
                  </div>
                  <!-- <div class="form-group col-md-2">
@@ -99,7 +106,7 @@
                  </div>
              </div>
          </div>
-         <button class=" add-beneficiary-btn"> <i class="far fa-plus"></i> Add Beneficiary</button>
+         <button class=" add-beneficiary-btn"> <i class="far fa-plus"></i> Add Another Beneficiary</button>
 
          <!-- Without SF Section -->
          <div class="income-paye-container">
@@ -124,29 +131,30 @@
          </div>
 
          <div>
-            <button class="calculate-btn" onclick="calculate()">Calculate</button>
-        </div>
+             <button class="calculate-btn" onclick="calculate()">Calculate</button>
+         </div>
 
-        <div class="row total-row" style="display: none;">
-            <div class="col-md-4">
-                <h3>Total Bursary Deduction</h3>
-            </div>
-            <div class="col-md-2">
-                <input type="number" class="form-control" id="total-fees" readonly="">
-            </div>
-            <div class="col-md-2">
+         <div class="row total-row" style="display: none;">
+             <div class="col-md-4">
+                 <h3>Total Bursary Deduction</h3>
+             </div>
+             <div class="col-md-2">
+                 <input type="number" class="form-control" id="total-fees" readonly="">
+             </div>
+             <div class="col-md-2">
 
-            </div>
-            <div class="col-md-2">
-                <input type="number" class="form-control" id="total-tax-exempt" readonly="">
-            </div>
-            <div class="col-md-2">
-                <input type="number" class="form-control" id="total-tax-not-exempt" readonly="">
-            </div>
-        </div>
+             </div>
+             <div class="col-md-2">
+                 <input type="number" class="form-control" id="total-tax-exempt" readonly="">
+             </div>
+             <div class="col-md-2">
+                 <input type="number" class="form-control" id="total-tax-not-exempt" readonly="">
+             </div>
+         </div>
 
          <!-- With SF Totals Section -->
          <div class="with-SF-container">
+            <p>* Admin Fees may apply *</p>
              <div>
                  <h2>With SmartFunder</h2>
                  <h2>Annual</h2>
@@ -192,7 +200,6 @@
 
      <div class="footer">
          <p>**Please note that these are indicative numbers. <br>
-             **Admin Fees may apply <br>
              **Actual savings can only be assessed once it has been processed through the employer's payroll system,
              taking into consideration all other package structuring information.</p>
      </div>
