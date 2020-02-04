@@ -43,7 +43,7 @@
              <h2>Savings Calculator 2020 </h2>
              <div class="divider-line"></div>
              <ul>
-                 <p>This SmartFunder Benefit calculator is intended to calculate anual estimated tax savings as a
+                 <p>This SmartFunder Benefit calculator is intended to calculate annual estimated tax savings as a
                      result
                      of
                      utilising the pre-tax benefit for educational expenses.</p>
@@ -63,7 +63,7 @@
          <div class="ed-expenses-container" id="ed-expenses-container">
              <h2>Educational Expenses</h2>
              <div class="form-row beneficiary-row" id="beneficiary-row-1">
-                 <div class="form-group col-lg-4 col-md-4">
+                 <div class="form-group col-lg-2 col-md-4">
                      <label for="">Beneficiary</label>
                      <input type="text" class="form-control beneficiary-number" id="" value="Beneficiary 1" readonly>
                  </div>
@@ -79,23 +79,6 @@
                      <label for="">Total Annual Fees (R)</label>
                      <input type="number" class="form-control total-fees-input input-to-edit" id="">
                  </div>
-                 <!-- <div class="form-group col-md-2">
-                     <label for="">First Month On Benefit</label>
-                     <select class="form-control input-to-edit" id="first-month-input" required>
-                         <option></option>
-                         <option value=12>January</option>
-                         <option value=11>February</option>
-                         <option value=10>March</option>
-                         <option value=9>April</option>
-                         <option value=8>May</option>
-                         <option value=7>June</option>
-                         <option value=6>July</option>
-                         <option value=5>August</option>
-                         <option value=4>September</option>
-                         <option value=3>October</option>
-                         <option value=2>November</option>
-                     </select>
-                 </div> -->
                  <div class="form-group col-md-5 col-lg-2 col-lg-offset-0 col-md-offset-1">
                      <label for="">Tax Exempt (R)</label>
                      <input type="number" class="form-control" id="input-tax-exempt" readonly>
@@ -103,6 +86,10 @@
                  <div class="form-group col-md-5 col-lg-2">
                      <label for="">Not Tax Exempt (R)</label>
                      <input type="number" class="form-control" id="input-not-tax-exempt" readonly>
+                 </div>
+                 <div class="form-group col-md-5 col-lg-2 remove-beneficiary-container">
+                    <label for=""> </label>
+                     <button class="form-control remove-beneficiary-btn"> Remove </button>
                  </div>
              </div>
          </div>
@@ -183,10 +170,6 @@
                  <h5>New Pay As You Earn tax (PAYE)</h5>
                  <h6 id="with-sf-new-paye"></h6>
              </div>
-             <!-- <div>
-                 <h5>Administration fee</h5>
-                 <h6 id="with-sf-admin-fee"></h6>
-             </div> -->
              <div class="savings-container">
                  <h4>Potential Annual Tax Saving**</h4>
                  <h4 id="annual-saving"></h4>

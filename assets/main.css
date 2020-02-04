@@ -229,6 +229,20 @@ button:focus,button:active {
     color: white;
 }
 
+.remove-beneficiary-btn {
+    transition: 0.5s;
+}
+.remove-beneficiary-btn:hover {
+    background-color: #FF2400;
+    color: white;
+    border: 1px solid #FF2400;
+    font-weight: 600;
+}
+
+.ed-expenses-container .form-row:nth-child(2) .remove-beneficiary-container {
+    display: none;
+}
+
 /* Total Row */
 
 .total-row {

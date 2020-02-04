@@ -1,7 +1,7 @@
 /* Table of Contents 
 
 1. Calculate PAYE from Income Tax Input
-2. Add Beneficiary Fiels Dynamically
+2. Add / Remove Beneficiary Fiels Dynamically
 3. Calculate Educational Expenses
 4. Calculate Admin Fee
 5. Calculate "With Smartfunder" fields
@@ -75,7 +75,7 @@ $("#input-taxable-income").on("input", () => {
 
 // ____________________________________________________
 
-// 2. Add Beneficiary Fiels Dynamically
+// 2. Add / Remove Beneficiary Fiels Dynamically
 
 let beneficiaryCount = 1; //Start with 1 Beneficiary
 
@@ -87,14 +87,30 @@ const addBeneficiary = () => {
         ${beneficiaryLine}
         </div>`);
     $(`#beneficiary-row-${beneficiaryCount} .beneficiary-number`).val(`Beneficiary ${beneficiaryCount}`);
-
-
 };
 
 $(document).on("click", ".add-beneficiary-btn", () => {
     addBeneficiary();
     $(".add-beneficiary-btn").addClass("clicked-once")
 });
+
+function removeBeneficiary(beneficiaryID) {
+    $(`#${beneficiaryID}`).remove();
+    beneficiaryCount--;
+    console.log(beneficiaryCount);
+
+    // adjust beneficiaryID's
+    for (i = 2; i <= beneficiaryCount +1; i++) { //adjust i for first child h2 tag
+        console.log(i)
+        $(`.ed-expenses-container > .form-row:nth-child(${i})`).attr("id",`beneficiary-row-${i-1}`)
+    }
+};
+
+$(document).on("click", ".remove-beneficiary-btn", function () {
+    let beneficiaryID = $(this).parent().parent().attr("id");
+    removeBeneficiary(beneficiaryID);
+});
+
 
 //  __________________________________________________________
 
@@ -191,55 +207,6 @@ $(document).on("change", ".ed-expenses-container select", () => {
 
 });
 
-// __________________________________________________--
-
-// 4. Calculate Admin Fee
-const VAT = 0.15;
-const costToCompany = [
-    // Bottom Bracket, Top Bracket, Cost p/m (exl. VAT)
-    [0, 99999, 10],
-    [100000, 149999, 30],
-    [150000, 199999, 50],
-    [200000, 249999, 70],
-    [250000, 299999, 90],
-    [300000, 349999, 100],
-    [350000, 399999, 110],
-    [400000, 449999, 120],
-    [450000, 499999, 130],
-    [500000, 549999, 140],
-    [550000, 600000, 150],
-]
-
-const getAdminFee = (taxableIncome) => {
-
-    const checkEmptyFields = () => {
-
-    }
-
-    let adminFee = 0;
-
-    // Loop For Every Beneficiary
-    for (m = 1; m <= beneficiaryCount; m++) {
-        let months = parseInt($(`#beneficiary-row-${m} #first-month-input`).val());
-        if (isNaN(months)) {
-            months = 0;
-        }
-        let currentBeneficiaryFee = 0;
-        // Loop Through costToCompany Array
-        for (l = 0; l <= costToCompany.length; l++) {
-            if (taxableIncome >= costToCompany[l][0] && taxableIncome <= costToCompany[l][1]) {
-                currentBeneficiaryFee += costToCompany[l][2];
-                currentBeneficiaryFee *= (1 + VAT);
-                currentBeneficiaryFee *= months;
-                break;
-            }
-        }
-        adminFee += currentBeneficiaryFee
-    }
-    return adminFee;
-}
-
-
 
 // __________________________________________________--
 
@@ -248,8 +215,10 @@ const getAdminFee = (taxableIncome) => {
 calculate = () => {
 
     // Check all fields not empty
-    if( $('.input-to-edit').filter(function() { return this.value === ''; }).length !== 0 ) {
-        alert("You need to fill in all the relevant fields");   
+    if ($('.input-to-edit').filter(function () {
+            return this.value === '';
+        }).length !== 0) {
+        alert("You need to fill in all the relevant fields");
     } else {
         // Taxable Income
         const taxableIncome = $("#input-taxable-income").val();
@@ -267,13 +236,10 @@ calculate = () => {
         // New PAYE
         $("#with-sf-new-paye").html("R " + getPaye(newTaxableIncome));
 
-        // Admin Fee
-        // $("#with-sf-admin-fee").html(getAdminFee(taxableIncome));
-
         // Annual Saving
-        const annualSaving = ($("#input-paye").val()
-        - getPaye(newTaxableIncome)
-        // - getAdminFee(taxableIncome)
+        const annualSaving = ($("#input-paye").val() -
+            getPaye(newTaxableIncome)
+            // - getAdminFee(taxableIncome)
         );
         $("#annual-saving").html("R " + annualSaving);
     }

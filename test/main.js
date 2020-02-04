@@ -28,29 +28,38 @@ convertToNumber = (text) => {
 //     $(".input1").val(convertToNumber(value));
 // });
 
-$(".input1").on("input", function () {
+// Prevent Non-Numeric entries while preserving "Text" type attribute for currency symbol
+document.querySelector(".input1").addEventListener("keypress", function (e) {
+    if (
+      e.key.length === 1 && e.key !== '.' && isNaN(e.key) && !e.ctrlKey || 
+      e.key === '.' && e.target.value.toString().indexOf('.') > -1
+    ) {
+      e.preventDefault();
+    }
+  });
+
+//   Add Thousands seperator & currency symbol
+
+$(".input1").on("input", function (event) {
     let value = $(".input1").val();
     value = value.replace("R ", "");
+    value = value.replace(/ /g, "");
     value = value.split("");
-    if (value.length > 3 && value.length <= 7) {
+    if (value.length > 3 && value.length <= 6) {
         value = value.join("");
         value = value.replace(/ /g, "");
         value = value.split("");
         value.splice(-3, 0, " ")
-        console.log("fire t")
-    }
-    else if (value.length >= 8) {
+    } else if (value.length >= 7) {
         value = value.join("");
         value = value.replace(/ /g, "");
         value = value.split("");
         value.splice(-6, 0, " ");
         value.splice(-3, 0, " ")
     }
-    $(".input1").val(`R ${value.join("")}`);
-});
 
-$(".input1").on("change", function () {
-    let value = $(".input1").val();
-    console.log(value)
-    console.log(convertToNumber(value)*2)
+    if (!value.length == 0) {
+        value = `R ${value.join("")}`
+    }
+    $(".input1").val(value);
 });
