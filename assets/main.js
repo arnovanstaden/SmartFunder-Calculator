@@ -34,6 +34,46 @@ convertTextToNumber = (text) => {
     return number;
 }
 
+
+// Remove invalid 0's infront - (due to input type=text)
+
+function removeZeros(value) {
+    let nozeros = value.replace("R ", "");
+    nozeros = nozeros.replace(/ /g, "");
+    let i = 0;
+    while (i < nozeros.length) {
+        if (nozeros.startsWith("0")) {
+            nozeros = nozeros.replace("0", "");
+        }
+        i++;
+    }
+    return nozeros;
+}
+
+// Function to call for non-editable inputs to change to currency
+
+function changeToCurrency(value) {
+    currency = value.toString();
+    currency = currency.split("");
+    if (currency.length > 3 && currency.length <= 6) {
+        currency = currency.join("");
+        currency = currency.replace(/ /g, "");
+        currency = currency.split("");
+        currency.splice(-3, 0, " ")
+    } else if (currency.length >= 7) {
+        currency = currency.join("");
+        currency = currency.replace(/ /g, "");
+        currency = currency.split("");
+        currency.splice(-6, 0, " ");
+        currency.splice(-3, 0, " ")
+    }
+
+    if (!currency.length == 0) {
+        currency = `R ${currency.join("")}`
+    }
+    return currency
+}
+
 // ____________________________________________________________
 
 // 2. CALCULATE PAYE FROM INCOME TAX INPUT
@@ -108,6 +148,8 @@ $("#input-taxable-income").on("input", () => {
 
 let beneficiaryCount = 1; // [Always Start with 1 Beneficiary]
 
+// Add Beneficiary
+
 const addBeneficiary = () => {
     beneficiaryCount++;
     const beneficiaryLine = $(".ed-expenses-container .form-row").html(); // - (insert beneficairy html)
@@ -123,14 +165,14 @@ $(document).on("click", ".add-beneficiary-btn", () => {
     $(".add-beneficiary-btn").addClass("clicked-once")
 });
 
-// Remove beneficiary
+// Remove Beneficiary
+
 function removeBeneficiary(beneficiaryID) {
     $(`#${beneficiaryID}`).remove(); // [Delete beneficiary withh correct ID]
     beneficiaryCount--;
 
     // adjust beneficiaryID's
     for (i = 2; i <= beneficiaryCount + 1; i++) { // [adjust remaining beneficiaries' IDs for correct successive numbering] - [adjust i for first child h2 tag]
-        console.log(i)
         $(`.ed-expenses-container > .form-row:nth-child(${i})`).attr("id", `beneficiary-row-${i-1}`)
     }
 };
@@ -151,11 +193,14 @@ const calcExpenses = () => {
     // Run for every beneficiary
     for (j = 1; j <= beneficiaryCount; j++) {
 
-        // Calc Tax Exempt & Not Exempt
+
+
+        // Get input values from user
         let totalFeesInput = $(`#beneficiary-row-${j} .total-fees-input`).val();
         totalFeesInput = convertTextToNumber(totalFeesInput);
-        console.log(totalFeesInput)
         let benefitTypeInput = $(`#beneficiary-row-${j} .benefit-type-input`).val();
+
+        // Calc Tax Exempt & Not Exempt
 
         const calcTaxExempt = () => {
             let taxExempt = 0;
@@ -179,8 +224,8 @@ const calcExpenses = () => {
                 notTaxExempt = totalFeesInput - tertiaryCeiling
             }
 
-            $(`#beneficiary-row-${j} #input-tax-exempt`).val(taxExempt);
-            $(`#beneficiary-row-${j} #input-not-tax-exempt`).val(notTaxExempt);
+            $(`#beneficiary-row-${j} #input-tax-exempt`).val(changeToCurrency(taxExempt));
+            $(`#beneficiary-row-${j} #input-not-tax-exempt`).val(changeToCurrency(notTaxExempt));
         }
 
         // Run Functions for every Benficiary
@@ -210,18 +255,19 @@ calcTotals = () => {
         // Total Tax Exempt
         let totalTaxExemptInput = $(`#beneficiary-row-${k} #input-tax-exempt`).val();
         totalTaxExempt += (totalTaxExemptInput == "" ? 0 : parseInt(totalTaxExemptInput));
-        $(".total-row #total-tax-exempt").val(totalTaxExempt);
+        console.log(changeToCurrency(totalTaxExempt))
+        $(".total-row #total-tax-exempt").val(changeToCurrency(totalTaxExempt));
 
         // Total Tax Not Exempt
         let totalNotTaxExemptInput = $(`#beneficiary-row-${k} #input-not-tax-exempt`).val();
         totalNotTaxExempt += (totalNotTaxExemptInput == "" ? 0 : parseInt(totalNotTaxExemptInput));
-        $(".total-row #total-tax-not-exempt").val(totalNotTaxExempt);
+        console.log(changeToCurrency(totalNotTaxExempt))
+        $(".total-row #total-tax-not-exempt").val(changeToCurrency(totalNotTaxExempt));
     }
 
 }
 
 $(document).on("input", ".ed-expenses-container input", () => {
-    console.log("change");
     calcExpenses();
     calcTotals();
 });
@@ -295,12 +341,10 @@ $(document).on("keypress", ".input-to-format", function (e) {
 //   6.3. Thousands Seperator & Currency Symbol
 
 // Add Thousands seperator & remove "R"
-
 $(document).on("input", ".input-to-format", function (event) {
     let value = $(this).val();
-    value = value.replace("R ", "");
-    value = value.replace(/ /g, "");
-    value = value.split("");
+    value = removeZeros(value) // [R + " " removed in removeZeros function]
+    value = value.split(""); // [Create array to insert thousand seperators]
     if (value.length > 3 && value.length <= 6) {
         value = value.join("");
         value = value.replace(/ /g, "");
@@ -320,14 +364,15 @@ $(document).on("input", ".input-to-format", function (event) {
     $(this).val(value);
 });
 
-// Add "R" on input leave
-$(document).on("change", ".input-to-format", function () {
+// Add "R" on input leave - ["R" inserted here otherwise too buggy if user edits input via mouse at custom index]
+$(document).on("focusout", ".input-to-format", function () {
     let value = $(this).val();
     if (!value.length == 0) {
         value = `R ${value}`
     }
     $(this).val(value);
 });
+
 
 // Remove "R" on input enter
 $(document).on("focus", ".input-to-format", function () {
