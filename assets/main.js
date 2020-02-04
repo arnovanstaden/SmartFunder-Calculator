@@ -1,9 +1,9 @@
 /* Table of Contents 
 
     1. Global Functions
-    2. Calculate PAYE from Income Tax Input
-    3. Add / Remove Beneficiary Fiels Dynamically
-    4. Calculate Educational Expenses
+    2. Add / Remove Beneficiary Fiels Dynamically
+    3. Calculate Educational Expenses
+    4. Calculate PAYE from Income Tax Input
     5. Calculate "With Smartfunder" fields
     6. Extras
         6.1. Reset All
@@ -28,7 +28,7 @@
 
 // Convert Text to Number - (Remove "R" + whitespace and convert to number | return number)
 convertTextToNumber = (text) => {
-    let number = text.replace("R ", "");
+    let number = text.replace("R", "");
     number = number.replace(/ /g, "");
     number = parseInt(number)
     return number;
@@ -38,7 +38,7 @@ convertTextToNumber = (text) => {
 // Remove invalid 0's infront - (due to input type=text)
 
 function removeZeros(value) {
-    let nozeros = value.replace("R ", "");
+    let nozeros = value.replace("R", "");
     nozeros = nozeros.replace(/ /g, "");
     let i = 0;
     while (i < nozeros.length) {
@@ -74,79 +74,12 @@ function changeToCurrency(value) {
     return currency
 }
 
-// ____________________________________________________________
-
-// 2. CALCULATE PAYE FROM INCOME TAX INPUT
-
-// Yearly Changes - {Might Change every year after budget announcement}
-const primaryRebate = 14220;
-const taxTable = {
-    taxFloor: [0, 35253, 63853, 100263, 147891],
-    taxScale: [
-        [18, 1, 195850],
-        [26, 195851, 305850],
-        [31, 305851, 423300],
-        [36, 423301, 555600],
-        [39, 555601, 708310]
-    ]
-}
-
-
-const taxThreshhold = primaryRebate * 100 / 18; // (Yearly income under on which no tax payable)
-let taxLevel = 0;
-
-// Get the income from user input in whithout SF section
-getIncome = () => {
-    return parseInt($("#input-taxable-income").val());
-}
-
-// Calculate PAYE
-getPaye = (taxableIncome) => {
-
-    let paye = 0;
-
-    for (i = 0; taxTable.taxScale.length + 1; i++) {
-
-        // Under Tax Threshold - (No tax payable)
-        if (taxableIncome <= taxThreshhold) {
-            paye = 0;
-            break;
-        }
-
-        // Above 600 000 - (SmartFunder Benefit N/A)
-        else if (taxableIncome > 600000) {
-            alert("Employees with current taxable income over R600 000 do not qualify for the SmartFunder Benefit");
-            document.getElementById("input-taxable-income").value = "";
-            break;
-        }
-
-        // Tax Scales - (Determine where in tax scale income falls)
-        else if (taxableIncome >= taxTable.taxScale[i][1] && taxableIncome <= taxTable.taxScale[i][2]) {
-            paye =
-                Math.round(
-                    taxTable.taxFloor[i] +
-                    (taxableIncome - taxTable.taxScale[i][1]) *
-                    (taxTable.taxScale[i][0] / 100) -
-                    primaryRebate
-                );
-            break;
-        }
-    }
-    return paye
-}
-
-// Change PAYE Input upon Income Input Change
-$("#input-taxable-income").on("input", () => {
-    document.getElementById("input-paye").value = getPaye(getIncome());;
-});
-
-
 
 // ____________________________________________________
 
-// 3. ADD / REMOVE BENEFICIARY FIELS DYNAMICALLY
+// 2. ADD / REMOVE BENEFICIARY FIELS DYNAMICALLY
 
-let beneficiaryCount = 1; // [Always Start with 1 Beneficiary]
+let beneficiaryCount = 1; // [Always Start with 1 Beneficiary, Global var because used in totals calululation under 5]
 
 // Add Beneficiary
 
@@ -185,7 +118,7 @@ $(document).on("click", ".remove-beneficiary-btn", function () {
 
 //  __________________________________________________________
 
-// 4. CALUCULATE EDUCATIONAL EXPENSES
+// 3. CALUCULATE EDUCATIONAL EXPENSES
 
 const calcExpenses = () => {
 
@@ -236,53 +169,114 @@ const calcExpenses = () => {
 
 }
 
-calcTotals = () => {
-
-    // Calculate Totals
-    let totalFees = 0;
-    let totalTaxExempt = 0;
-    let totalNotTaxExempt = 0;
-
-    // LOGIC: Loop through every input in each column, parse and add to total if !== "" otherwise add 0
-
-    for (k = 1; k <= beneficiaryCount; k++) {
-
-        // Total Fees
-        let totalFeesInput = $(`#beneficiary-row-${k} .total-fees-input`).val();
-        totalFees += (totalFeesInput == "" ? 0 : parseInt(totalFeesInput));
-        $(".total-row #total-fees").val(totalFees);
-
-        // Total Tax Exempt
-        let totalTaxExemptInput = $(`#beneficiary-row-${k} #input-tax-exempt`).val();
-        totalTaxExempt += (totalTaxExemptInput == "" ? 0 : parseInt(totalTaxExemptInput));
-        console.log(changeToCurrency(totalTaxExempt))
-        $(".total-row #total-tax-exempt").val(changeToCurrency(totalTaxExempt));
-
-        // Total Tax Not Exempt
-        let totalNotTaxExemptInput = $(`#beneficiary-row-${k} #input-not-tax-exempt`).val();
-        totalNotTaxExempt += (totalNotTaxExemptInput == "" ? 0 : parseInt(totalNotTaxExemptInput));
-        console.log(changeToCurrency(totalNotTaxExempt))
-        $(".total-row #total-tax-not-exempt").val(changeToCurrency(totalNotTaxExempt));
-    }
-
-}
-
 $(document).on("input", ".ed-expenses-container input", () => {
     calcExpenses();
-    calcTotals();
 });
 
 $(document).on("change", ".ed-expenses-container select", () => {
     calcExpenses();
-    calcTotals();
 });
+
+// ____________________________________________________________
+
+// 4. CALCULATE PAYE FROM INCOME TAX INPUT
+
+// Yearly Changes - {Might Change every year after budget announcement}
+const primaryRebate = 14220;
+const taxTable = {
+    taxFloor: [0, 35253, 63853, 100263, 147891],
+    taxScale: [
+        [18, 1, 195850],
+        [26, 195851, 305850],
+        [31, 305851, 423300],
+        [36, 423301, 555600],
+        [39, 555601, 708310]
+    ]
+}
+
+
+const taxThreshhold = primaryRebate * 100 / 18; // (Yearly income under on which no tax payable)
+let taxLevel = 0;
+
+// Get the income from user input in whithout SF section
+getIncome = () => {
+    return removeZeros($("#input-taxable-income").val());
+}
+
+// Calculate PAYE
+getPaye = (taxableIncome) => {
+
+    let paye = 0;
+
+    for (i = 0; taxTable.taxScale.length + 1; i++) {
+
+        // Under Tax Threshold - (No tax payable)
+        if (taxableIncome <= taxThreshhold) {
+            paye = 0;
+            break;
+        }
+
+        // Above 600 000 - (SmartFunder Benefit N/A)
+        else if (taxableIncome > 600000) {
+            alert("Employees with current taxable income over R600 000 do not qualify for the SmartFunder Benefit");
+            document.getElementById("input-taxable-income").value = "";
+            break;
+        }
+
+        // Tax Scales - (Determine where in tax scale income falls)
+        else if (taxableIncome >= taxTable.taxScale[i][1] && taxableIncome <= taxTable.taxScale[i][2]) {
+            paye =
+                Math.round(
+                    taxTable.taxFloor[i] +
+                    (taxableIncome - taxTable.taxScale[i][1]) *
+                    (taxTable.taxScale[i][0] / 100) -
+                    primaryRebate
+                );
+            break;
+        }
+    }
+    return paye
+}
+
+// Change PAYE Input upon Income Input Change
+$("#input-taxable-income").on("input", () => {
+    $("#input-current-paye").val(changeToCurrency(getPaye(getIncome())));
+});
+
 
 
 // __________________________________________________--
 
 // 5. CALCULATE "WITH SMARTFUNDER" FIELDS
 
+
+
+
+
 calculate = () => {
+
+    // Calculate Beneficiary Totals
+
+    let totalFees = 0;
+    let totalTaxExempt = 0;
+    let totalNotTaxExempt = 0;
+
+    // [Loop through every input in each column and add to total if not empty]
+
+    for (k = 1; k <= beneficiaryCount; k++) {
+
+        // Total Tax Exempt
+        let totalTaxExemptInput = $(`#beneficiary-row-${k} #input-tax-exempt`).val();
+        totalTaxExempt += (totalTaxExemptInput == "" ? 0 : convertTextToNumber(totalTaxExemptInput));
+
+        // Total Tax Not Exempt
+        let totalNotTaxExemptInput = $(`#beneficiary-row-${k} #input-not-tax-exempt`).val();
+        totalNotTaxExempt += (totalNotTaxExemptInput == "" ? 0 : convertTextToNumber(totalNotTaxExemptInput));
+    }
+
+
+
+
 
     // Check all fields not empty
     if ($('.input-to-edit').filter(function () {
@@ -290,30 +284,29 @@ calculate = () => {
         }).length !== 0) {
         alert("You need to fill in all the relevant fields");
     } else {
-        // Taxable Income
-        const taxableIncome = $("#input-taxable-income").val();
-        $("#with-sf-tax-income").html(taxableIncome);
 
-        // Total Fees, Tax Exempt & Not Tax Exempt
-        $("#with-sf-total-fees").html($(".total-row #total-fees").val());
-        $("#with-sf-tax-exempt").html(-$(".total-row #total-tax-exempt").val());
-        $("#with-sf-not-tax-exempt").html($(".total-row #total-tax-not-exempt").val());
+        // Get current taxable income & paye from input - [used to calc new tax income]
+        const currentTaxableIncome = convertTextToNumber($("#input-taxable-income").val());
+        const currentPAYE = getPaye(getIncome());
 
-        // New Taxable Income
-        const newTaxableIncome = taxableIncome - $(".total-row #total-tax-exempt").val();
-        $("#with-sf-new-tax-income").html("R " + newTaxableIncome);
 
-        // New PAYE
-        $("#with-sf-new-paye").html("R " + getPaye(newTaxableIncome));
+        // New Totals
+        const newTaxableIncome = currentTaxableIncome - totalTaxExempt;
+        const newPAYE = getPaye(newTaxableIncome);
+        const annualSaving = (currentPAYE - newPAYE);
 
-        // Annual Saving
-        const annualSaving = ($("#input-paye").val() -
-            getPaye(newTaxableIncome)
-            // - getAdminFee(taxableIncome)
-        );
-        $("#annual-saving").html("R " + annualSaving);
+
+
+        // Insert into html
+        $("#with-sf-new-tax-income").html(changeToCurrency(newTaxableIncome));
+        $("#with-sf-new-paye").html(changeToCurrency(newPAYE));
+        $("#annual-saving").html(changeToCurrency(annualSaving));
     }
 }
+
+$(".calculate-btn").click(() => {
+    calculate();
+})
 
 
 
@@ -357,26 +350,8 @@ $(document).on("input", ".input-to-format", function (event) {
         value.splice(-6, 0, " ");
         value.splice(-3, 0, " ")
     }
-
     if (!value.length == 0) {
-        value = `${value.join("")}`
+        value = `R ${value.join("")}`
     }
-    $(this).val(value);
-});
-
-// Add "R" on input leave - ["R" inserted here otherwise too buggy if user edits input via mouse at custom index]
-$(document).on("focusout", ".input-to-format", function () {
-    let value = $(this).val();
-    if (!value.length == 0) {
-        value = `R ${value}`
-    }
-    $(this).val(value);
-});
-
-
-// Remove "R" on input enter
-$(document).on("focus", ".input-to-format", function () {
-    let value = $(this).val();
-    value = value.replace("R ", "");
     $(this).val(value);
 });

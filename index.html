@@ -51,7 +51,7 @@
                      <ul>
                          <li>1. Enter your educational expenses details</li>
                          <li>2. Enter your Current Taxable Annual Income</li>
-                         <li>3. Click on calculate</li>
+                         <li>3. Click on Calculate</li>
                      </ul>
 
 
@@ -76,19 +76,19 @@
                      </select>
                  </div>
                  <div class="form-group col-lg-2 col-md-4">
-                     <label for="">Total Annual Fees (R)</label>
+                     <label for="">Total Annual Fees</label>
                      <input type="text" class="form-control total-fees-input input-to-edit input-to-format" >
                  </div>
-                 <div class="form-group col-md-5 col-lg-2 col-lg-offset-0 col-md-offset-1">
-                     <label for="">Tax Exempt (R)</label>
+                 <div class="form-group col-md-4 col-lg-2 col-lg-offset-0 col-md-offset-1">
+                     <label for="">Tax Exempt</label>
                      <input type="text" class="form-control input-to-format" id="input-tax-exempt" readonly disabled>
                  </div>
-                 <div class="form-group col-md-5 col-lg-2">
-                     <label for="">Not Tax Exempt (R)</label>
+                 <div class="form-group col-md-4 col-lg-2">
+                     <label for="">Not Tax Exempt</label>
                      <input type="text" class="form-control input-to-format" id="input-not-tax-exempt" readonly disabled>
                  </div>
-                 <div class="form-group col-md-5 col-lg-2 remove-beneficiary-container">
-                    <label for=""> </label>
+                 <div class="form-group col-md-4 col-lg-2 remove-beneficiary-container">
+                    <label for=""> &nbsp;</label>
                      <button class="form-control remove-beneficiary-btn"> Remove </button>
                  </div>
              </div>
@@ -103,7 +103,7 @@
              <div class="form-group row m-auto justify-content-md-center">
                  <label for="" class="col-form-label col-sm-4">Current Annual Taxable Income (R)</label>
                  <div class="col-sm-6">
-                     <input type="number" class="form-control input-to-edit input-to-format" id="input-taxable-income" min="0"
+                     <input type="text" class="form-control input-to-edit input-to-format" id="input-taxable-income" min="0"
                          max="600000">
                  </div>
 
@@ -111,32 +111,14 @@
              <div class="form-group row m-auto justify-content-md-center">
                  <label for="" class="col-form-label col-sm-4">Current Pay As You Earn tax (PAYE) (R)</label>
                  <div class="col-sm-6">
-                     <input type="number" class="form-control" id="input-paye" readonly>
+                     <input type="text" class="form-control input-to-format" id="input-current-paye" readonly disabled>
                  </div>
 
              </div>
          </div>
 
          <div>
-             <button class="calculate-btn" onclick="calculate()">Calculate</button>
-         </div>
-
-         <div class="row total-row" style="display: none;">
-             <div class="col-md-4">
-                 <h3>Total Bursary Deduction</h3>
-             </div>
-             <div class="col-md-2">
-                 <input type="number" class="form-control" id="total-fees" readonly="">
-             </div>
-             <div class="col-md-2">
-
-             </div>
-             <div class="col-md-2">
-                 <input type="number" class="form-control" id="total-tax-exempt" readonly="">
-             </div>
-             <div class="col-md-2">
-                 <input type="number" class="form-control" id="total-tax-not-exempt" readonly="">
-             </div>
+             <button class="calculate-btn">Calculate</button>
          </div>
 
          <!-- With SF Totals Section -->
@@ -146,7 +128,7 @@
                  <h2>With SmartFunder</h2>
                  <h2>Annual</h2>
              </div>
-             <div style="display: none;">
+             <!-- <div style="display: none;">
                  <h5>Current taxable income</h5>
                  <h6 id="with-sf-tax-income"></h6>
              </div>
@@ -161,7 +143,7 @@
              <div style="display: none;">
                  <h5>Non tax exempt educational expenses deduction</h5>
                  <h6 id="with-sf-not-tax-exempt"></h6>
-             </div>
+             </div> -->
              <div>
                  <h5>New Taxable Income</h5>
                  <h6 id="with-sf-new-tax-income"></h6>
