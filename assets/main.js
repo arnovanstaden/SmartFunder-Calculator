@@ -1,19 +1,44 @@
 /* Table of Contents 
 
-1. Calculate PAYE from Income Tax Input
-2. Add / Remove Beneficiary Fiels Dynamically
-3. Calculate Educational Expenses
-4. Calculate Admin Fee
-5. Calculate "With Smartfunder" fields
-6. Remove Beneficiary
+    1. Global Functions
+    2. Calculate PAYE from Income Tax Input
+    3. Add / Remove Beneficiary Fiels Dynamically
+    4. Calculate Educational Expenses
+    5. Calculate "With Smartfunder" fields
+    6. Extras
+        6.1. Reset All
+        6.2. Prevent non numeric entries in text inputs
+        6.3. Thousands Seperator & Currency Symbol
 
 */
 
+
+/* COMMENTS LEGEND 
+
+    // General
+    () Explanatory
+    [] Logical
+
+*/
+
+
 // ____________________________________________________________
 
-// 1. Calculate PAYE from Income Tax Input
+// 1. GLOBAL FUNCTIONS
 
-// Yearly Changes
+// Convert Text to Number - (Remove "R" + whitespace and convert to number | return number)
+convertTextToNumber = (text) => {
+    let number = text.replace("R ", "");
+    number = number.replace(/ /g, "");
+    number = parseInt(number)
+    return number;
+}
+
+// ____________________________________________________________
+
+// 2. CALCULATE PAYE FROM INCOME TAX INPUT
+
+// Yearly Changes - {Might Change every year after budget announcement}
 const primaryRebate = 14220;
 const taxTable = {
     taxFloor: [0, 35253, 63853, 100263, 147891],
@@ -27,9 +52,10 @@ const taxTable = {
 }
 
 
-const taxThreshhold = primaryRebate * 100 / 18;
+const taxThreshhold = primaryRebate * 100 / 18; // (Yearly income under on which no tax payable)
 let taxLevel = 0;
 
+// Get the income from user input in whithout SF section
 getIncome = () => {
     return parseInt($("#input-taxable-income").val());
 }
@@ -40,18 +66,21 @@ getPaye = (taxableIncome) => {
     let paye = 0;
 
     for (i = 0; taxTable.taxScale.length + 1; i++) {
-        // Under Tax Threshold
+
+        // Under Tax Threshold - (No tax payable)
         if (taxableIncome <= taxThreshhold) {
             paye = 0;
             break;
         }
-        // Above 600 000
+
+        // Above 600 000 - (SmartFunder Benefit N/A)
         else if (taxableIncome > 600000) {
             alert("Employees with current taxable income over R600 000 do not qualify for the SmartFunder Benefit");
             document.getElementById("input-taxable-income").value = "";
             break;
         }
-        // Tax Scales
+
+        // Tax Scales - (Determine where in tax scale income falls)
         else if (taxableIncome >= taxTable.taxScale[i][1] && taxableIncome <= taxTable.taxScale[i][2]) {
             paye =
                 Math.round(
@@ -75,13 +104,13 @@ $("#input-taxable-income").on("input", () => {
 
 // ____________________________________________________
 
-// 2. Add / Remove Beneficiary Fiels Dynamically
+// 3. ADD / REMOVE BENEFICIARY FIELS DYNAMICALLY
 
-let beneficiaryCount = 1; //Start with 1 Beneficiary
+let beneficiaryCount = 1; // [Always Start with 1 Beneficiary]
 
 const addBeneficiary = () => {
     beneficiaryCount++;
-    const beneficiaryLine = $(".ed-expenses-container .form-row").html();
+    const beneficiaryLine = $(".ed-expenses-container .form-row").html(); // - (insert beneficairy html)
     $(".ed-expenses-container").append(
         `<div class="form-row" id="beneficiary-row-${beneficiaryCount}"> 
         ${beneficiaryLine}
@@ -94,27 +123,27 @@ $(document).on("click", ".add-beneficiary-btn", () => {
     $(".add-beneficiary-btn").addClass("clicked-once")
 });
 
+// Remove beneficiary
 function removeBeneficiary(beneficiaryID) {
-    $(`#${beneficiaryID}`).remove();
+    $(`#${beneficiaryID}`).remove(); // [Delete beneficiary withh correct ID]
     beneficiaryCount--;
-    console.log(beneficiaryCount);
 
     // adjust beneficiaryID's
-    for (i = 2; i <= beneficiaryCount +1; i++) { //adjust i for first child h2 tag
+    for (i = 2; i <= beneficiaryCount + 1; i++) { // [adjust remaining beneficiaries' IDs for correct successive numbering] - [adjust i for first child h2 tag]
         console.log(i)
-        $(`.ed-expenses-container > .form-row:nth-child(${i})`).attr("id",`beneficiary-row-${i-1}`)
+        $(`.ed-expenses-container > .form-row:nth-child(${i})`).attr("id", `beneficiary-row-${i-1}`)
     }
 };
 
 $(document).on("click", ".remove-beneficiary-btn", function () {
-    let beneficiaryID = $(this).parent().parent().attr("id");
+    let beneficiaryID = $(this).parent().parent().attr("id"); // [need parent's parent ID to be unique]
     removeBeneficiary(beneficiaryID);
 });
 
 
 //  __________________________________________________________
 
-// 3. Caluculate Educational Expenses
+// 4. CALUCULATE EDUCATIONAL EXPENSES
 
 const calcExpenses = () => {
 
@@ -122,15 +151,10 @@ const calcExpenses = () => {
     // Run for every beneficiary
     for (j = 1; j <= beneficiaryCount; j++) {
 
-        // // Run Order Check
-        // const runOrderCheck = () => {
-        //     if ($(`#beneficiary-row-${j} .benefit-type-input`).val() !== "") {
-        //         $(`#beneficiary-row-${j} .total-fees-input`).prop("disabled", false);
-        //     }
-        // }
-
         // Calc Tax Exempt & Not Exempt
         let totalFeesInput = $(`#beneficiary-row-${j} .total-fees-input`).val();
+        totalFeesInput = convertTextToNumber(totalFeesInput);
+        console.log(totalFeesInput)
         let benefitTypeInput = $(`#beneficiary-row-${j} .benefit-type-input`).val();
 
         const calcTaxExempt = () => {
@@ -197,6 +221,7 @@ calcTotals = () => {
 }
 
 $(document).on("input", ".ed-expenses-container input", () => {
+    console.log("change");
     calcExpenses();
     calcTotals();
 });
@@ -204,13 +229,12 @@ $(document).on("input", ".ed-expenses-container input", () => {
 $(document).on("change", ".ed-expenses-container select", () => {
     calcExpenses();
     calcTotals();
-
 });
 
 
 // __________________________________________________--
 
-// 5. Calculate "With Smartfunder" fields
+// 5. CALCULATE "WITH SMARTFUNDER" FIELDS
 
 calculate = () => {
 
@@ -245,8 +269,69 @@ calculate = () => {
     }
 }
 
-// Reset All
+
+
+// __________________________________________________--
+
+// 6. EXTRAS
+
+// 6.1. Reset All
 
 $(document).on("click", "#reset-all-btn", () => {
     location.reload();
+});
+
+// 6.2. Prevent non numeric entries in text inputs
+
+$(document).on("keypress", ".input-to-format", function (e) {
+    if (
+        e.key.length === 1 && e.key !== '.' && isNaN(e.key) && !e.ctrlKey ||
+        e.key === '.' && e.target.value.toString().indexOf('.') > -1
+    ) {
+        e.preventDefault();
+    }
+});
+
+//   6.3. Thousands Seperator & Currency Symbol
+
+// Add Thousands seperator & remove "R"
+
+$(document).on("input", ".input-to-format", function (event) {
+    let value = $(this).val();
+    value = value.replace("R ", "");
+    value = value.replace(/ /g, "");
+    value = value.split("");
+    if (value.length > 3 && value.length <= 6) {
+        value = value.join("");
+        value = value.replace(/ /g, "");
+        value = value.split("");
+        value.splice(-3, 0, " ")
+    } else if (value.length >= 7) {
+        value = value.join("");
+        value = value.replace(/ /g, "");
+        value = value.split("");
+        value.splice(-6, 0, " ");
+        value.splice(-3, 0, " ")
+    }
+
+    if (!value.length == 0) {
+        value = `${value.join("")}`
+    }
+    $(this).val(value);
+});
+
+// Add "R" on input leave
+$(document).on("change", ".input-to-format", function () {
+    let value = $(this).val();
+    if (!value.length == 0) {
+        value = `R ${value}`
+    }
+    $(this).val(value);
+});
+
+// Remove "R" on input enter
+$(document).on("focus", ".input-to-format", function () {
+    let value = $(this).val();
+    value = value.replace("R ", "");
+    $(this).val(value);
 });

@@ -40,7 +40,7 @@ document.querySelector(".input1").addEventListener("keypress", function (e) {
 
 //   Add Thousands seperator & currency symbol
 
-$(".input1").on("input", function (event) {
+$(".input-to-edit").on("input", function (event) {
     let value = $(".input1").val();
     value = value.replace("R ", "");
     value = value.replace(/ /g, "");
