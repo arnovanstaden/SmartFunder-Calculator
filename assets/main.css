@@ -15,6 +15,7 @@ html {
 body {
     font-family: "Nunito";
     font-size: 16px;
+    background-color: rgba(153, 153, 153, 0.05);
 }
 
 .calculator-body {
@@ -86,7 +87,7 @@ select option {
 
 .input-to-edit:focus {
     border: 2px solid var(--dark-blue);
-    box-shadow: 3px 3px 10px rgba(73, 143, 205, 0.2) !important;
+    box-shadow: 3px 3px 10px rgba(97, 97, 97, 0.4) !important;
     font-weight: 800;
     letter-spacing: 1px;
 }
@@ -103,9 +104,11 @@ button:focus,button:active {
 }
 
 .calculator-heading {
-    box-shadow: 3px 3px 10px rgba(25, 35, 54, 0.5);
+    box-shadow: 8px 8px 8px rgba(25, 35, 54, 0.15);
+    border-radius: 5px;
     padding: 2% 5%;
     background-color: white;
+    b
 }
 
 .calculator-heading > .divider-line {
@@ -135,7 +138,8 @@ button:focus,button:active {
     color: white;
     margin: 50px 0;
     padding: 2% 5%;
-    box-shadow: 3px 3px 10px rgba(25, 35, 54, 0.2);
+    box-shadow: 8px 8px 8px rgba(25, 35, 54, 0.15);
+    border-radius: 5px;
 }
 
 .income-paye-container h2 {
@@ -183,7 +187,8 @@ button:focus,button:active {
 .ed-expenses-container .form-row {
     padding: 10px 10px 0 10px;
     margin: 20px 0;
-    box-shadow: 3px 3px 10px rgba(25, 35, 54, 0.2);
+    box-shadow: 8px 8px 8px rgba(25, 35, 54, 0.15);
+    border-radius: 5px;
 }
 
 .ed-expenses-container .form-row label {
@@ -191,7 +196,7 @@ button:focus,button:active {
 }
 
 .ed-expenses-container .form-row:nth-child(odd) {
-    background-color: rgba(153, 153, 153, 0.1);
+    background-color: rgba(153, 153, 153, 0.05);
 }
 
 .beneficiary-number {
@@ -295,7 +300,8 @@ button:focus,button:active {
 }
 .reset-btn:hover {
     border: 2px solid var(--light-blue);
-    color: var(--light-blue);
+    background-color: var(--light-blue);
+    color: white
 }
 
 .reset-container {
@@ -309,6 +315,9 @@ button:focus,button:active {
 
 .with-SF-container {
     padding: 2% 10%;
+    border-radius: 10px;
+    box-shadow: 8px 8px 8px rgba(25, 35, 54, 0.15);]
+    background-color: white;
 }
 
 .with-SF-container h2 {
@@ -335,6 +344,13 @@ button:focus,button:active {
 .savings-container {
     border: 3px solid var(--dark-blue) !important;
     margin-top: 20px;
+    border-radius: 5px;
+    padding: 10px 5px !important;
+}
+
+.savings-calculated {
+    background-color: var(--dark-blue);
+    color: white;
 }
 
 .savings-container h4:nth-child(2) {

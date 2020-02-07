@@ -289,18 +289,18 @@ calculate = () => {
         const currentTaxableIncome = convertTextToNumber($("#input-taxable-income").val());
         const currentPAYE = getPaye(getIncome());
 
-
         // New Totals
         const newTaxableIncome = currentTaxableIncome - totalTaxExempt;
         const newPAYE = getPaye(newTaxableIncome);
         const annualSaving = (currentPAYE - newPAYE);
 
-
-
         // Insert into html
         $("#with-sf-new-tax-income").html(changeToCurrency(newTaxableIncome));
         $("#with-sf-new-paye").html(changeToCurrency(newPAYE));
         $("#annual-saving").html(changeToCurrency(annualSaving));
+
+         // Change total saving background
+        $(".savings-container").addClass("savings-calculated")
     }
 }
 
