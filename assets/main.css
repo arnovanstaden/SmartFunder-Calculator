@@ -30,9 +30,7 @@ body {
     -o-border-radius: 5px;
 }
 
-.calculator-body>.section-heading {
-    text-align: left;
-}
+.calculator-body>.section-heading {}
 
 .calculator-body>.section-heading h2 {
     text-align: left;
