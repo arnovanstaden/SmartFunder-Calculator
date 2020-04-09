@@ -2,11 +2,12 @@
     .with-SF-container {
         padding: 2%;
     }
+
 }
 
 @media screen and (max-width: 576px) {
     .calculator-heading>img {
-        width:85%;
+        width: 85%;
         padding: 20px 0;
     }
 

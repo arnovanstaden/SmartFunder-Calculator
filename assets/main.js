@@ -18,6 +18,7 @@
     // General
     () Explanatory
     [] Logical
+    | Function Return
 
 */
 
@@ -74,7 +75,6 @@ function changeToCurrency(value) {
     return currency
 }
 
-
 // ____________________________________________________
 
 // 2. ADD / REMOVE BENEFICIARY FIELS DYNAMICALLY
@@ -115,18 +115,14 @@ $(document).on("click", ".remove-beneficiary-btn", function () {
     removeBeneficiary(beneficiaryID);
 });
 
-
 //  __________________________________________________________
 
 // 3. CALUCULATE EDUCATIONAL EXPENSES
 
 const calcExpenses = () => {
 
-
     // Run for every beneficiary
     for (j = 1; j <= beneficiaryCount; j++) {
-
-
 
         // Get input values from user
         let totalFeesInput = $(`#beneficiary-row-${j} .total-fees-input`).val();
@@ -165,8 +161,6 @@ const calcExpenses = () => {
         // runOrderCheck();
         calcTaxExempt();
     }
-
-
 }
 
 $(document).on("input", ".ed-expenses-container input", () => {
@@ -181,19 +175,19 @@ $(document).on("change", ".ed-expenses-container select", () => {
 
 // 4. CALCULATE PAYE FROM INCOME TAX INPUT
 
-// Yearly Changes - {Might Change every year after budget announcement}
-const primaryRebate = 14220;
+// Yearly Changes - {Changes every year after budget speech}
+const primaryRebate = 14958;
 const taxTable = {
-    taxFloor: [0, 35253, 63853, 100263, 147891],
-    taxScale: [
-        [18, 1, 195850],
-        [26, 195851, 305850],
-        [31, 305851, 423300],
-        [36, 423301, 555600],
-        [39, 555601, 708310]
+
+    taxFloor: [0, 37062, 67144, 105429, 155505], //{Payable in full from previous level}
+    taxScale: [ // [0] - %, [1] - tax level start, [2] - next tax end (next start -1) 
+        [18, 1, 205901],
+        [26, 205901, 321600],
+        [31, 321601, 445500],
+        [36, 445501, 58420],
+        [39, 584201, 774800]
     ]
 }
-
 
 const taxThreshhold = primaryRebate * 100 / 18; // (Yearly income under on which no tax payable)
 let taxLevel = 0;
@@ -243,15 +237,9 @@ $("#input-taxable-income").on("input", () => {
     $("#input-current-paye").val(changeToCurrency(getPaye(getIncome())));
 });
 
-
-
 // __________________________________________________--
 
 // 5. CALCULATE "WITH SMARTFUNDER" FIELDS
-
-
-
-
 
 calculate = () => {
 
@@ -274,11 +262,7 @@ calculate = () => {
         totalNotTaxExempt += (totalNotTaxExemptInput == "" ? 0 : convertTextToNumber(totalNotTaxExemptInput));
     }
 
-
-
-
-
-    // Check all fields not empty
+    // Check if all inputs populated
     if ($('.input-to-edit').filter(function () {
             return this.value === '';
         }).length !== 0) {
@@ -299,16 +283,19 @@ calculate = () => {
         $("#with-sf-new-paye").html(changeToCurrency(newPAYE));
         $("#annual-saving").html(changeToCurrency(annualSaving));
 
-         // Change total saving background
-        $(".savings-container").addClass("savings-calculated")
+        // Change total saving background
+        $(".savings-container").addClass("savings-calculated");
+
+        // Scroll to totals
+        // $([document.documentElement, document.body]).animate({
+        //     scrollTop: $('.savings-container').offset().top
+        // }, 2000);
     }
 }
 
 $(".calculate-btn").click(() => {
     calculate();
 })
-
-
 
 // __________________________________________________--
 

@@ -1,166 +1,180 @@
- <!DOCTYPE html>
- <html>
+<!DOCTYPE html>
+<html>
 
- <head>
-     <meta charset="utf-8">
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <meta name=" robots" content="index, follow">
-     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name=" robots" content="index, follow">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-     <!-- Webdacity -->
-     <meta name="author" content="Webdacity">
-     <meta name="publisher" content="Webdacity" />
-     <meta name="copyright" content="2019 SmartFunder" />
+    <!-- Webdacity -->
+    <meta name="author" content="Webdacity">
+    <meta name="publisher" content="Webdacity" />
+    <meta name="copyright" content="2019 SmartFunder" />
 
-     <!-- Website Content -->
-     <title> SmartFunder Savings Calculator 2020</title>
-     <meta name="description" content="">
-     <meta name="keywords" content="" />
+    <!-- Website Content -->
+    <title> SmartFunder Savings Calculator 2020</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="" />
 
-     <!-- Favicon -->
-     <link rel="icon" type="image/png" href="./assets/images/SF-Favicon.png">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="./assets/images/SF-Favicon.png">
 
-     <!-- Theme Colour -->
-     <meta name="theme-color" content="#">
-     <meta name="apple-mobile-web-app-status-bar-style" content="">
+    <!-- Theme Colour -->
+    <meta name="theme-color" content="#">
+    <meta name="apple-mobile-web-app-status-bar-style" content="">
 
-     <!-- StyleSheet - Vendors -->
-     <link href="./vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
-     <link href="./vendors/font-awesome/css/all.css" rel="stylesheet">
+    <!-- Themes -->
+    <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700,800&display=swap" rel="stylesheet">
 
-     <!-- StyleSheet - Internal -->
-     <link rel="stylesheet" type="text/css" href="./assets/main.css" />
-     <link rel="stylesheet" type="text/css" href="./assets/responsive.css" />
+    <!-- StyleSheet - Vendors -->
+    <link href="./vendors/bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="./vendors/font-awesome/css/all.css" rel="stylesheet">
 
- </head>
+    <!-- StyleSheet - Internal -->
+    <link rel="stylesheet" type="text/css" href="./assets/main.css" />
+    <link rel="stylesheet" type="text/css" href="./assets/responsive.css" />
 
- <body>
+</head>
 
-     <!-- Intro Section -->
-     <div class="calculator-body">
-         <div class="calculator-heading">
-             <img src="./assets/images/SmartFunder-Footer-Logo-1000px.png" alt="SmartFunder Logo">
-             <h2>Savings Calculator 2020 </h2>
-             <div class="divider-line"></div>
-             <ul>
-                 <p>This SmartFunder Benefit calculator is intended to calculate annual estimated tax savings as a
-                     result
-                     of
-                     utilising the pre-tax benefit for educational expenses.</p>
-                 <p>Instructions:
-                     <ul>
-                         <li>1. Enter your educational expenses details</li>
-                         <li>2. Enter your Current Taxable Annual Income</li>
-                         <li>3. Click on Calculate</li>
-                     </ul>
+<body>
+    <div class="calculator-body">
+
+        <!-- Intro Section -->
+        <div class="calculator-heading">
+            <img src="./assets/images/SmartFunder-Footer-Logo-1000px.png" alt="SmartFunder Logo">
+            <h2>Savings Calculator 2020 </h2>
+            <div class="divider-line"></div>
+            <!-- <ul>
+                <p>This SmartFunder Benefit calculator is intended to calculate annual estimated tax savings as a
+                    result
+                    of
+                    utilising the pre-tax benefit for educational expenses.</p>
+                <p>Instructions:
+                    <ul>
+                        <li>1. Enter your educational expenses details</li>
+                        <li>2. Enter your Current Taxable Annual Income</li>
+                        <li>3. Click on Calculate</li>
+                    </ul>
 
 
-                 </p>
-             </ul>
-         </div>
+                </p>
+            </ul> -->
+        </div>
 
-         <!-- Beneficiaries / Educational Expenses Section-->
-         <div class="ed-expenses-container" id="ed-expenses-container">
-             <h2>Educational Expenses</h2>
-             <div class="form-row beneficiary-row" id="beneficiary-row-1">
-                 <div class="form-group col-lg-2 col-md-4">
-                     <label for="">Beneficiary</label>
-                     <input type="text" class="form-control beneficiary-number" value="Beneficiary 1" readonly disabled>
-                 </div>
-                 <div class="form-group col-lg-2 col-md-4">
-                     <label for="">Benefit Type</label>
-                     <select class="form-control input-to-edit benefit-type-input">
-                         <option value=""></option>
-                         <option value="school">School</option>
-                         <option value="tertiary">Tertiary</option>
-                     </select>
-                 </div>
-                 <div class="form-group col-lg-2 col-md-4">
-                     <label for="">Total Annual Fees</label>
-                     <input type="text" class="form-control total-fees-input input-to-edit input-to-format" >
-                 </div>
-                 <div class="form-group col-md-4 col-lg-2 col-lg-offset-0 col-md-offset-1">
-                     <label for="">Tax Exempt</label>
-                     <input type="text" class="form-control input-to-format" id="input-tax-exempt" readonly disabled>
-                 </div>
-                 <div class="form-group col-md-4 col-lg-2">
-                     <label for="">Not Tax Exempt</label>
-                     <input type="text" class="form-control input-to-format" id="input-not-tax-exempt" readonly disabled>
-                 </div>
-                 <div class="form-group col-md-4 col-lg-2 remove-beneficiary-container">
+        <div class="section-heading">
+            <h2>Inputs</h2>
+        </div>
+
+        <!-- Without SF Section -->
+        <div class="income-paye-container">
+            <div class="section-heading">
+                <h2>Income</h2>
+            </div>
+            <div class="form-group row m-auto justify-content-md-center">
+                <label for="" class="col-form-label col-sm-6">Current Annual Taxable Income</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control input-to-edit input-to-format" id="input-taxable-income"
+                        min="0" max="600000">
+                </div>
+
+            </div>
+            <!-- <div class="form-group row m-auto justify-content-md-center">
+                <label for="" class="col-form-label col-sm-4">Current Pay As You Earn tax (PAYE) (R)</label>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control input-to-format" id="input-current-paye" readonly disabled>
+                </div>
+
+            </div> -->
+        </div>
+
+        <!-- Beneficiaries / Educational Expenses Section-->
+        <div class="ed-expenses-container" id="ed-expenses-container">
+            <div class="section-heading">
+                <h2>Educational Expenses</h2>
+            </div>
+            <div class="form-row beneficiary-row" id="beneficiary-row-1">
+                <div class="form-group col-lg-2 col-md-4">
+                    <label for="">Beneficiary</label>
+                    <input type="text" class="form-control beneficiary-number" value="Beneficiary 1" readonly disabled>
+                </div>
+                <div class="form-group col-lg-2 col-md-4">
+                    <label for="">Benefit Type</label>
+                    <select class="form-control input-to-edit benefit-type-input">
+                        <option value=""></option>
+                        <option value="school">School</option>
+                        <option value="tertiary">Tertiary</option>
+                    </select>
+                </div>
+                <div class="form-group col-lg-2 col-md-4">
+                    <label for="">Total Annual Fees</label>
+                    <input type="text" class="form-control total-fees-input input-to-edit input-to-format">
+                </div>
+                <div class="form-group col-md-4 col-lg-2 col-lg-offset-0 col-md-offset-1">
+                    <label for="">Tax Exempt</label>
+                    <input type="text" class="form-control input-to-format" id="input-tax-exempt" readonly disabled>
+                </div>
+                <div class="form-group col-md-4 col-lg-2">
+                    <label for="">Not Tax Exempt</label>
+                    <input type="text" class="form-control input-to-format" id="input-not-tax-exempt" readonly disabled>
+                </div>
+                <div class="form-group col-md-4 col-lg-2 remove-beneficiary-container">
                     <label for=""> &nbsp;</label>
-                     <button class="form-control remove-beneficiary-btn"> <i class="fas fa-user-minus"></i> Remove </button>
-                 </div>
-             </div>
-         </div>
-         <button class=" add-beneficiary-btn"> <i class="far fa-plus"></i> Add Another Beneficiary</button>
-
-         <!-- Without SF Section -->
-         <div class="income-paye-container">
-             <div class="without-SF-container">
-                 <h2>Without SmartFunder</h2>
-             </div>
-             <div class="form-group row m-auto justify-content-md-center">
-                 <label for="" class="col-form-label col-sm-4">Current Annual Taxable Income (R)</label>
-                 <div class="col-sm-6">
-                     <input type="text" class="form-control input-to-edit input-to-format" id="input-taxable-income" min="0"
-                         max="600000">
-                 </div>
-
-             </div>
-             <div class="form-group row m-auto justify-content-md-center">
-                 <label for="" class="col-form-label col-sm-4">Current Pay As You Earn tax (PAYE) (R)</label>
-                 <div class="col-sm-6">
-                     <input type="text" class="form-control input-to-format" id="input-current-paye" readonly disabled>
-                 </div>
-
-             </div>
-         </div>
-
-         <div>
-             <button class="calculate-btn">Calculate</button>
-         </div>
-
-         <!-- With SF Totals Section -->
-         <div class="with-SF-container">
-            <p>* Admin Fees may apply *</p>
-             <div>
-                 <h2>With SmartFunder</h2>
-                 <h2>Annual</h2>
-             </div>
-             <div>
-                 <h5>New Taxable Income</h5>
-                 <h6 id="with-sf-new-tax-income"></h6>
-             </div>
-             <div>
-                 <h5>New Pay As You Earn tax (PAYE)</h5>
-                 <h6 id="with-sf-new-paye"></h6>
-             </div>
-             <div class="savings-container">
-                 <h4>Potential Annual Tax Saving**</h4>
-                 <h4 id="annual-saving"></h4>
-             </div>
-         </div>
-     </div>
-     <div class="reset-container">
-         <button class="reset-btn" id="reset-all-btn"> Reset All</button>
-     </div>
-
-
-     <div class="footer">
-         <p>**Please note that these are indicative numbers. <br>
-             **Actual savings can only be assessed once it has been processed through the employer's payroll system,
-             taking into consideration all other package structuring information.</p>
-     </div>
-     </div>
+                    <button class="form-control remove-beneficiary-btn"> <i class="fas fa-user-minus"></i> Remove
+                    </button>
+                </div>
+            </div>
+        </div>
+        <button class=" add-beneficiary-btn"> <i class="far fa-plus"></i> Add Another Beneficiary</button>
 
 
 
-     <!-- Scripts -->
-     <script src="./vendors/jquery/jquery-3.4.1.min.js"></script>
-     <script src="./vendors/bootstrap/bootstrap.bundle.min.js"> </script>
-     <script src="./assets/main.js"></script>
+        <div>
+            <button class="calculate-btn">Calculate</button>
+        </div>
 
- </body>
+        <!-- With SF Totals Section -->
+        <div class="with-SF-container">
 
- </html>
+            <!-- <div>
+                <h2>With SmartFunder</h2>
+                <h2>Annual</h2>
+            </div>
+            <div>
+                <h5>New Taxable Income</h5>
+                <h6 id="with-sf-new-tax-income"></h6>
+            </div>
+            <div>
+                <h5>New Pay As You Earn tax (PAYE)</h5>
+                <h6 id="with-sf-new-paye"></h6>
+            </div> -->
+            <div class="savings-container row">
+                <h4 class="col-sm-6 col-12">Potential Annual Tax Saving**:</h4>
+                <h4 class="col-sm-6 col-12 pt-sm-0 pt-2" id="annual-saving"></h4>
+            </div>
+        </div>
+    </div>
+
+    <div class="reset-container">
+        <button class="reset-btn" id="reset-all-btn"> Reset All</button>
+    </div>
+
+
+    <div class="footer">
+        <p>* Admin Fees may apply</p>
+        <p>** Please note that these are indicative numbers. <br>
+            ** Actual savings can only be assessed once it has been processed through the employer's payroll system,
+            taking into consideration all other package structuring information.</p>
+    </div>
+    </div>
+
+
+
+    <!-- Scripts -->
+    <script src="./vendors/jquery/jquery-3.4.1.min.js"></script>
+    <script src="./vendors/bootstrap/bootstrap.bundle.min.js"> </script>
+    <script src="./assets/main.js"></script>
+
+</body>
+
+</html>
