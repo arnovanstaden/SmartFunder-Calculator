@@ -19,4 +19,8 @@
     .with-SF-container h2 {
         font-size: 1.6em;
     }
+
+    .savings-container h4 {
+        text-align: center;
+    }
 }
