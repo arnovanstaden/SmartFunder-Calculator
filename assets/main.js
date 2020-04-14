@@ -181,15 +181,15 @@ const taxTable = {
 
     taxFloor: [0, 37062, 67144, 105429, 155505], //{Payable in full from previous level}
     taxScale: [
-        [18, 1, 205901],
+        [18, 1, 205900],
         [26, 205901, 321600],
-        [31, 321601, 445500],
-        [36, 445501, 584200],
+        [31, 321601, 445100],
+        [36, 445101, 584200],
         [39, 584201, 774800]
     ]
 }
 
-const taxThreshhold = primaryRebate * 100 / 18; // (Yearly income under on which no tax payable)
+const taxThreshhold = primaryRebate * 100 / taxTable.taxScale[0][0]; // (Yearly income under on which no tax payable)
 let taxLevel = 0;
 
 // Get the income from user input in whithout SF section
@@ -203,7 +203,6 @@ getPaye = (taxableIncome) => {
     let paye = 0;
 
     for (i = 0; taxTable.taxScale.length + 1; i++) {
-        console.log(taxTable.taxScale[i])
         // Under Tax Threshold - (No tax payable)
         if (taxableIncome <= taxThreshhold) {
             paye = 0;
@@ -233,9 +232,9 @@ getPaye = (taxableIncome) => {
 }
 
 // Change PAYE Input upon Income Input Change
-// $("#input-taxable-income").on("input", () => {
-//     $("#input-current-paye").val(changeToCurrency(getPaye(getIncome())));
-// });
+$("#input-taxable-income").on("input", () => {
+    $("#input-current-paye").val(changeToCurrency(getPaye(getIncome())));
+});
 
 // __________________________________________________--
 
