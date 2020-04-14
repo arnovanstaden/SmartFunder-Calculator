@@ -180,11 +180,11 @@ const primaryRebate = 14958;
 const taxTable = {
 
     taxFloor: [0, 37062, 67144, 105429, 155505], //{Payable in full from previous level}
-    taxScale: [ // [0] - %, [1] - tax level start, [2] - next tax end (next start -1) 
+    taxScale: [
         [18, 1, 205901],
         [26, 205901, 321600],
         [31, 321601, 445500],
-        [36, 445501, 58420],
+        [36, 445501, 584200],
         [39, 584201, 774800]
     ]
 }
@@ -203,7 +203,7 @@ getPaye = (taxableIncome) => {
     let paye = 0;
 
     for (i = 0; taxTable.taxScale.length + 1; i++) {
-
+        console.log(taxTable.taxScale[i])
         // Under Tax Threshold - (No tax payable)
         if (taxableIncome <= taxThreshhold) {
             paye = 0;
@@ -233,9 +233,9 @@ getPaye = (taxableIncome) => {
 }
 
 // Change PAYE Input upon Income Input Change
-$("#input-taxable-income").on("input", () => {
-    $("#input-current-paye").val(changeToCurrency(getPaye(getIncome())));
-});
+// $("#input-taxable-income").on("input", () => {
+//     $("#input-current-paye").val(changeToCurrency(getPaye(getIncome())));
+// });
 
 // __________________________________________________--
 
