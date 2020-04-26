@@ -23,4 +23,8 @@
     .savings-container h4 {
         text-align: center;
     }
+
+    .income-paye-container label {
+        text-align: center;
+    }
 }

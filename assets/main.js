@@ -286,9 +286,9 @@ calculate = () => {
         $(".savings-container").addClass("savings-calculated");
 
         // Scroll to totals
-        // $([document.documentElement, document.body]).animate({
-        //     scrollTop: $('.savings-container').offset().top
-        // }, 2000);
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $('.savings-container').offset().top
+        }, 2000);
     }
 }
 

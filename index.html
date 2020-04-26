@@ -45,21 +45,6 @@
             <img src="./assets/images/SmartFunder-Footer-Logo-1000px.png" alt="SmartFunder Logo">
             <h2>Savings Calculator 2020 </h2>
             <div class="divider-line"></div>
-            <!-- <ul>
-                <p>This SmartFunder Benefit calculator is intended to calculate annual estimated tax savings as a
-                    result
-                    of
-                    utilising the pre-tax benefit for educational expenses.</p>
-                <p>Instructions:
-                    <ul>
-                        <li>1. Enter your educational expenses details</li>
-                        <li>2. Enter your Current Taxable Annual Income</li>
-                        <li>3. Click on Calculate</li>
-                    </ul>
-
-
-                </p>
-            </ul> -->
         </div>
 
         <!-- Without SF Section -->
@@ -67,21 +52,14 @@
             <div class="section-heading">
                 <h2>Income</h2>
             </div>
-            <div class="form-group row m-auto justify-content-md-center">
-                <label for="" class="col-form-label col-sm-6">Current Annual Taxable Income</label>
-                <div class="col-sm-6">
+            <div class="form-group row m-auto justify-content-md-left">
+                <label for="" class="col-form-label col-sm-6 col-md-4">Current Annual Taxable Income</label>
+                <div class="col-sm-6 col-md-5">
                     <input type="text" class="form-control input-to-edit input-to-format" id="input-taxable-income"
                         min="0" max="600000">
                 </div>
 
             </div>
-            <!-- <div class="form-group row m-auto justify-content-md-center">
-                <label for="" class="col-form-label col-sm-4">Current Pay As You Earn tax (PAYE) (R)</label>
-                <div class="col-sm-6">
-                    <input type="text" class="form-control input-to-format" id="input-current-paye" readonly disabled>
-                </div>
-
-            </div> -->
         </div>
 
         <!-- Beneficiaries / Educational Expenses Section-->
@@ -121,12 +99,12 @@
                 </div>
             </div>
         </div>
-        <button class=" add-beneficiary-btn"> <i class="far fa-plus"></i> Add Another Beneficiary</button>
+        <button class="add-beneficiary-btn"> <i class="far fa-plus"></i> Add Another Beneficiary</button>
 
 
 
         <div>
-            <button class="calculate-btn">Calculate</button>
+            <button class="calculate-btn">Calculate Saving</button>
         </div>
 
         <!-- With SF Totals Section -->
@@ -145,7 +123,7 @@
                 <h6 id="with-sf-new-paye"></h6>
             </div> -->
             <div class="savings-container row">
-                <h4 class="col-sm-6 col-12">Potential Annual Tax Saving**:</h4>
+                <h4 class="col-sm-6 col-12">Potential Annual Tax Saving<span>*</span>:</h4>
                 <h4 class="col-sm-6 col-12 pt-sm-0 pt-2" id="annual-saving"></h4>
             </div>
         </div>
@@ -157,9 +135,8 @@
 
 
     <div class="footer">
-        <p>* Admin Fees may apply</p>
-        <p>** Please note that these are indicative numbers. <br>
-            ** Actual savings can only be assessed once it has been processed through the employer's payroll system,
+        <p>* Admin Fees may apply. Please note that these are indicative numbers. Actual savings can only be assessed
+            once it has been processed through the employer's payroll system,
             taking into consideration all other package structuring information.</p>
     </div>
     </div>
