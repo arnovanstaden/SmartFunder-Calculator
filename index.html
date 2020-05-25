@@ -42,8 +42,7 @@
 
         <!-- Intro Section -->
         <div class="calculator-heading">
-            <img src="./assets/images/SmartFunder-Footer-Logo-1000px.png" alt="SmartFunder Logo">
-            <h2>Savings Calculator 2020 </h2>
+            <h2>SmartFunder Savings Calculator 2020 </h2>
             <div class="divider-line"></div>
         </div>
 
@@ -52,13 +51,12 @@
             <div class="section-heading">
                 <h2>Income</h2>
             </div>
-            <div class="form-group row m-auto justify-content-md-left">
-                <label for="" class="col-form-label col-sm-6 col-md-4">Current Annual Taxable Income</label>
-                <div class="col-sm-6 col-md-5">
+            <div class="form-group row">
+                <label class="form-label col-lg-auto col-md-4 mb-2 mb-md-0">Current Annual Taxable Income</label>
+                <div class="col-lg-3 col-md-4 ">
                     <input type="text" class="form-control input-to-edit input-to-format" id="input-taxable-income"
                         min="0" max="600000">
                 </div>
-
             </div>
         </div>
 
@@ -68,11 +66,11 @@
                 <h2>Educational Expenses</h2>
             </div>
             <div class="form-row beneficiary-row" id="beneficiary-row-1">
-                <div class="form-group col-lg-2 col-md-4">
+                <div class="form-group col-lg-3 col-md-4">
                     <label for="">Beneficiary</label>
                     <input type="text" class="form-control beneficiary-number" value="Beneficiary 1" readonly disabled>
                 </div>
-                <div class="form-group col-lg-2 col-md-4">
+                <div class="form-group col-lg-3 col-md-4">
                     <label for="">Benefit Type</label>
                     <select class="form-control input-to-edit benefit-type-input">
                         <option value=""></option>
@@ -80,19 +78,19 @@
                         <option value="tertiary">Tertiary</option>
                     </select>
                 </div>
-                <div class="form-group col-lg-2 col-md-4">
+                <div class="form-group col-lg-3 col-md-4">
                     <label for="">Total Annual Fees</label>
                     <input type="text" class="form-control total-fees-input input-to-edit input-to-format">
                 </div>
-                <div class="form-group col-md-4 col-lg-2 col-lg-offset-0 col-md-offset-1">
+                <div class="form-group col-md-4 col-lg-2 col-lg-offset-0 col-md-offset-1 d-none">
                     <label for="">Tax Exempt</label>
                     <input type="text" class="form-control input-to-format" id="input-tax-exempt" readonly disabled>
                 </div>
-                <div class="form-group col-md-4 col-lg-2">
+                <div class="form-group col-md-4 col-lg-2 d-none">
                     <label for="">Not Tax Exempt</label>
                     <input type="text" class="form-control input-to-format" id="input-not-tax-exempt" readonly disabled>
                 </div>
-                <div class="form-group col-md-4 col-lg-2 remove-beneficiary-container">
+                <div class="form-group col-md-4 col-lg-3 remove-beneficiary-container">
                     <label for=""> &nbsp;</label>
                     <button class="form-control remove-beneficiary-btn"> <i class="fas fa-user-minus"></i> Remove
                     </button>
@@ -123,8 +121,8 @@
                 <h6 id="with-sf-new-paye"></h6>
             </div> -->
             <div class="savings-container row">
-                <h4 class="col-sm-6 col-12">Potential Annual Tax Saving<span>*</span>:</h4>
-                <h4 class="col-sm-6 col-12 pt-sm-0 pt-2" id="annual-saving"></h4>
+                <label class="col-lg-3 col-md-4 mb-2 mb-md-0">Potential Annual Tax Saving<span>*</span>:</label>
+                <input class="form-control col-lg-3 col-md-4 pt-sm-0 pt-2" id="annual-saving" disabled></input>
             </div>
         </div>
     </div>
@@ -138,7 +136,7 @@
         <p>* Admin Fees may apply. Please note that these are indicative numbers. Actual savings can only be assessed
             once it has been processed through the employer's payroll system,
             taking into consideration all other package structuring information.</p>
-    </div>
+        <img src="./assets/images/SmartFunder-Footer-Logo-1000px.png" alt="SmartFunder Logo">
     </div>
 
 

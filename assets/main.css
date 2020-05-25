@@ -122,6 +122,10 @@ button:active {
     padding-bottom: 4px;
 }
 
+.section-heading {
+    text-align: left;
+}
+
 
 /* Calculator Heading */
 .calculator-heading img {
@@ -131,20 +135,20 @@ button:active {
 
 .calculator-heading {
     border-radius: 5px;
-    padding: 0 5%;
     text-align: center;
 }
 
 .calculator-heading h2 {
     font-weight: 600;
     font-size: 1.6rem;
+    text-align: left;
 }
 
 .calculator-heading>.divider-line {
     width: 40%;
     height: 3px;
     background-color: var(--light-blue);
-    margin: 0.5rem auto;
+    margin: 0.5rem 0 1.5rem 0;
 }
 
 .calculator-heading ul {
@@ -171,6 +175,7 @@ button:active {
 
 .income-paye-container .form-group {
     margin: 20px auto !important;
+    align-items: center;
 }
 
 
@@ -224,13 +229,14 @@ button:active {
     background-color: var(--light-blue);
     color: white;
     border: 2px solid transparent;
-    margin: 10px auto;
-    padding: 5px 20px;
+    padding: 3px 10px;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     transition: 0.5s;
+    float: left;
+    margin-left: 1rem;
 }
 
 .add-beneficiary-btn:hover {
@@ -286,7 +292,7 @@ button:active {
     margin: 20px auto;
     padding: 5px 20px;
     border-radius: 5px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     letter-spacing: 0.5px;
     letter-spacing: 1px;
@@ -303,9 +309,9 @@ button:active {
     border: 2px solid var(--dark-blue);
     text-align: center;
     margin: 20px auto !important;
-    padding: 5px 20px;
+    padding: 3px 15px;
     border-radius: 5px;
-    font-size: 1.1rem;
+    font-size: 1rem;
     font-weight: 600;
     transition: 0.5s;
     margin-left: 20px;
@@ -347,46 +353,35 @@ button:active {
     border-radius: 5px;
     padding: .375rem .75rem;
     background-color: transparent;
-    border: 2px solid var(--dark-blue);
     transition: 0.4s;
     -webkit-transition: 0.4s;
     -moz-transition: 0.4s;
     -ms-transition: 0.4s;
     -o-transition: 0.4s;
+    align-items: center;
 }
 
-.savings-calculated {
+/* .savings-container.savings-calculated {
     background-color: var(--light-blue);
     border: 2px solid var(--light-blue);
     color: white;
-}
+} */
 
-
-.savings-calculated h4 {
-    color: white !important;
-}
-
-.savings-container h4 {
-    color: var(--dark-blue);
-    text-align: left;
-    margin: 0;
-    font-size: 1.2rem;
-    transition: 0.4s;
-    -webkit-transition: 0.4s;
-    -moz-transition: 0.4s;
-    -ms-transition: 0.4s;
-    -o-transition: 0.4s;
+.savings-container label {
+    font-size: 1.1rem;
     font-weight: 600;
+    text-align: left;
 }
 
-.savings-container h4 span {
+.savings-container input {
     font-size: 1rem;
+    border: 3px solid var(--dark-blue);
+    font-weight: 700;
+    background-color: transparent;
+    padding-top: 6px !important;
+    background-color: transparent !important;
+    color: var(--dark-blue) !important;
 }
-
-.savings-container h4:nth-child(2) {
-    text-align: center;
-}
-
 
 .with-SF-container p {
     font-size: 1.2rem;
@@ -403,4 +398,9 @@ button:active {
 
 .footer p {
     margin: 0;
+}
+
+.footer img {
+    width: 25%;
+    margin: 1rem auto 0 auto;
 }

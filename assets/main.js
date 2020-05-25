@@ -280,7 +280,7 @@ calculate = () => {
         // Insert into html
         $("#with-sf-new-tax-income").html(changeToCurrency(newTaxableIncome));
         $("#with-sf-new-paye").html(changeToCurrency(newPAYE));
-        $("#annual-saving").html(changeToCurrency(annualSaving));
+        $("#annual-saving").val(changeToCurrency(annualSaving));
 
         // Change total saving background
         $(".savings-container").addClass("savings-calculated");
