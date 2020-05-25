@@ -289,7 +289,6 @@ button:active {
     background-color: var(--dark-blue);
     color: white;
     border: none;
-    margin: 20px auto;
     padding: 5px 20px;
     border-radius: 5px;
     font-size: 1rem;
@@ -301,6 +300,13 @@ button:active {
 
 .calculate-btn:hover {
     background-color: var(--light-blue);
+}
+
+.calculate-saving-container {
+    margin: 4rem 0 2rem 0;
+    display: flex;
+    justify-content: center;
+    width: 100%;
 }
 
 .reset-btn {
@@ -328,6 +334,8 @@ button:active {
     display: flex;
     justify-content: center !important;
 }
+
+
 
 
 /* With SF Container */
