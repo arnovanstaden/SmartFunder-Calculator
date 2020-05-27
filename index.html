@@ -43,7 +43,6 @@
         <!-- Intro Section -->
         <div class="calculator-heading">
             <h2>SmartFunder Savings Calculator 2020 </h2>
-            <div class="divider-line"></div>
         </div>
 
         <!-- Without SF Section -->
@@ -52,8 +51,8 @@
                 <h2>Income</h2>
             </div>
             <div class="form-group row">
-                <label class="form-label col-lg-auto col-md-4 mb-2 mb-md-0">Current Annual Taxable Income</label>
-                <div class="col-lg-3 col-md-4 ">
+                <label class="form-label col-lg-3 col-md-4 mb-2 mb-md-0">Current Annual Taxable Income</label>
+                <div class="col-lg-3 col-md-4">
                     <input type="text" class="form-control input-to-edit input-to-format" id="input-taxable-income"
                         min="0" max="600000">
                 </div>
@@ -120,9 +119,11 @@
                 <h5>New Pay As You Earn tax (PAYE)</h5>
                 <h6 id="with-sf-new-paye"></h6>
             </div> -->
-            <div class="savings-container row">
-                <label class="col-lg-3 col-md-4 mb-2 mb-md-0">Potential Annual Tax Saving<span>*</span>:</label>
-                <input class="form-control col-lg-3 col-md-4 pt-sm-0 pt-2" id="annual-saving" disabled></input>
+            <div class="savings-container">
+                <label class="col-lg-3 col-md-4 mb-md-0">Potential Annual Tax Saving<span>*</span>:</label>
+                <div class="col-lg-3 col-md-4">
+                    <input class="form-control pt-sm-0 pt-2" id="annual-saving" disabled></input>
+                </div>
             </div>
         </div>
     </div>
