@@ -211,7 +211,7 @@ getPaye = (taxableIncome) => {
 
         // Above 600 000 - (SmartFunder Benefit N/A)
         else if (taxableIncome > 600000) {
-            alert("Employees with current taxable income over R600 000 do not qualify for the SmartFunder Benefit");
+            alert("Employees with Total Renumeration over R600 000 do not qualify for the SmartFunder Benefit");
             document.getElementById("input-taxable-income").value = "";
             break;
         }
