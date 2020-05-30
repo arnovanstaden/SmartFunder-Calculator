@@ -22,6 +22,24 @@
 
 */
 
+// --------------------------------
+
+// YEARLY CHANGES
+
+// Yearly Changes - {Changes every year after budget speech}
+const primaryRebate = 14958;
+const taxTable = {
+
+    taxFloor: [0, 37062, 67144, 105429, 155505], //{Payable in full from previous level}
+    taxScale: [
+        [18, 1, 205900],
+        [26, 205901, 321600],
+        [31, 321601, 445100],
+        [36, 445101, 584200],
+        [39, 584201, 774800]
+    ]
+}
+
 
 // ____________________________________________________________
 
@@ -36,7 +54,7 @@ convertTextToNumber = (text) => {
 }
 
 
-// Remove invalid 0's infront - (due to input type=text)
+// Remove invalid 0's infront - (due to input type=text | return number without zeros in front)
 
 function removeZeros(value) {
     let nozeros = value.replace("R", "");
@@ -174,20 +192,6 @@ $(document).on("change", ".ed-expenses-container select", () => {
 // ____________________________________________________________
 
 // 4. CALCULATE PAYE FROM INCOME TAX INPUT
-
-// Yearly Changes - {Changes every year after budget speech}
-const primaryRebate = 14958;
-const taxTable = {
-
-    taxFloor: [0, 37062, 67144, 105429, 155505], //{Payable in full from previous level}
-    taxScale: [
-        [18, 1, 205900],
-        [26, 205901, 321600],
-        [31, 321601, 445100],
-        [36, 445101, 584200],
-        [39, 584201, 774800]
-    ]
-}
 
 const taxThreshhold = primaryRebate * 100 / taxTable.taxScale[0][0]; // (Yearly income under on which no tax payable)
 let taxLevel = 0;
